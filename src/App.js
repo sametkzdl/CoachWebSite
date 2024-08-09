@@ -1,8 +1,23 @@
+import React, { Fragment } from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/home";
+import FormApply from "./pages/form";
 function App() {
   return (
+    <Fragment>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/FormApply" element={<FormApply />} />
+        <Route path={"*"} element={<Error />} />
+      </Routes>
+    </Fragment>
+  );
+}
+
+function Error() {
+  return (
     <div>
-      Coach Web Site
-      <h2 >ALİ VELİ</h2>
+      <h2>This Page İs Not Found</h2>
     </div>
   );
 }

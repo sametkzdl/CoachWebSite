@@ -2,15 +2,45 @@
 @import url('https://fonts.cdnfonts.com/css/poppins');
 
 
-
 body {
   margin: 0;
   font-family: 'TT Commons', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  position: relative;
+  min-height: 100vh;
+  color: #fff;
+  background-color: darkblue;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  html {
+    font-size: 8px;
+  }
 }
