@@ -11,6 +11,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2.5rem;
+  
 `;
 
 const LogoTitle = styled.h1`
@@ -32,6 +33,11 @@ const StyledA = styled.a`
   color: #fff;
   font-weight: 300;
   font-size: 24px;
+  transition: all .3s;
+  &:hover {
+    scale: 1.1;
+    text-shadow: 20px 0 30px #fff,-20px 0 30px #fff ;
+  }
 `;
 
 const WrapHamburger = styled.div`
@@ -75,7 +81,7 @@ const HamburgerNav = styled.nav`
 const Header = () => {
   const { bluropen, setBlurOpen } = useBlurContext();
   const NavigationData = [
-    { title: "Fiyatlarımız", direction: "#swiper" },
+    { title: "Fiyatlarımız", direction: "#slider" },
     { title: "Koçlarımız", direction: "#avatars" },
     { title: "İletişim", direction: "#footer" },
   ];

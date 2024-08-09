@@ -47,7 +47,7 @@ const MediaImg = styled.img`
 
 const Footer = () => {
   return (
-    <WrapBanner>
+    <WrapBanner id="footer">
       <Title>Bize Ulaşın</Title>
       <WrapImages>
         <a href="https://www.linkedin.com/">

@@ -1,6 +1,6 @@
 const Avatar = () => {
     return (
-      <div>
+      <div id="avatars">
         <h2>Avatar</h2>
       </div>
     );

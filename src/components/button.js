@@ -13,6 +13,11 @@ const StyledButton = styled.button`
   text-shadow: rgb(43, 43, 40) 1px 0 10px;
   cursor: pointer;
   white-space: nowrap;
+  transition: all .3s;
+  &:hover {
+    scale: 1.1;
+    box-shadow: 10px 0 20px ${theme.primary},-10px 0 20px ${theme.secondary} ;
+  }
   ${({ big }) =>
     big &&
     css`

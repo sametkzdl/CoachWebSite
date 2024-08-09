@@ -2,18 +2,18 @@
 @import url('https://fonts.cdnfonts.com/css/poppins');
 
 
-body {
+body ,html {
   margin: 0;
   font-family: 'TT Commons', sans-serif;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
   font-size: 16px;
   position: relative;
   min-height: 100vh;
   color: #fff;
   background-color: black;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth ;
+  scroll-padding: 30px;
 }
 
 @media only screen and (max-width: 1200px) {

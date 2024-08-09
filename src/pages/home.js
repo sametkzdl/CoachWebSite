@@ -7,8 +7,6 @@ import Detail from "../components/detail";
 import Footer from "../components/footer";
 import styled, { css } from "styled-components";
 import { useBlurContext } from "../context/blurContext";
-import { Fragment } from "react";
-
 const Wrap = styled.div`
   position: absolute;
   width: 0;

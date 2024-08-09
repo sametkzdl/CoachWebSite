@@ -85,6 +85,7 @@ const StyledSpan = styled.span`
 `;
 
 const ArrowImage = styled.img`
+  cursor: pointer;
   width: 60px;
   height: 60px;
   animation-name: ${linearShake};
@@ -112,7 +113,9 @@ const Banner = () => {
       </WrapBanner>
       <div style={{ textAlign: "center" }}>
         <StyledSpan>daha fazla</StyledSpan>
-        <ArrowImage src={downArrow} />
+        <a href="#slider">
+          <ArrowImage src={downArrow} />
+        </a>
       </div>
     </Wrap>
   );

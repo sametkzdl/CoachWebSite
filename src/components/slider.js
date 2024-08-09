@@ -1,14 +1,205 @@
-import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
+import styled from "styled-components";
+import { device, theme } from "../utils/global";
+import okey from "../public/icons/okey.svg";
+import Button from "./button";
+import { Link } from "react-router-dom";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+const Wrap = styled.div`
+  display: flex;
+  padding: 6rem 2.5rem;
+  background: linear-gradient(
+    to bottom,
+    ${theme.darkBlue},
+    ${theme.dark},
+    ${theme.dark},
+    ${theme.darkBlue}
+  );
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.5rem;
+  flex-wrap: wrap;
+  @media (max-width: 1210px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+  }
+  @media ${device.tablet} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+`;
 
+const MainCard = styled.div`
+  text-align: center;
+  padding: 2rem 1rem;
+  max-width: 350px;
+  flex-grow: 3;
+  background: linear-gradient(to right, #60d6e7, #024dae);
+  border-radius: 50px;
+  border: none;
+  max-width: 350px;
+  box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
+  @media (max-width: 1210px) {
+    grid-column: 1/-1;
+    grid-row: 2;
+    justify-self: center;
+  }
+`;
 
+const SmallCard = styled.div`
+  text-align: center;
+  padding: 2rem 1rem;
+  flex-grow: 2;
+  background: linear-gradient(to right, #fff5ae, #ffaaf7);
+  border-radius: 50px;
+  border: none;
+  max-width: 330px;
+  width: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
+  @media (max-width: 1210px) {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: right;
+  }
+`;
+
+const SmallCard2 = styled.div`
+  text-align: center;
+  padding: 2rem 1rem;
+  flex-grow: 2;
+  background: linear-gradient(to right, #cdffd9, #95bafe);
+  border-radius: 50px;
+  border: none;
+  max-width: 330px;
+  width: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
+
+  @media (max-width: 1210px) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+`;
+
+const MassiveTitle = styled.h3`
+  white-space: nowrap;
+  font-size: 32px;
+  font-weight: 500;
+  margin-top: 0;
+  border-bottom: 4px solid #fff;
+  padding-bottom: 10px;
+  @media ${device.tablet} {
+    font-size: 24px;
+  }
+`;
+
+const SmallTitle = styled.h3`
+  white-space: nowrap;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 0;
+  border-bottom: 4px solid #fff;
+  padding-bottom: 10px;
+  @media ${device.tablet} {
+    font-size: 20px;
+  }
+`;
+
+const UlItem = styled.ul`
+  position: relative;
+  list-style: none;
+  padding: 0;
+`;
+
+const LiItem = styled.li`
+  white-space: auto;
+  position: relative;
+  margin-block: 12px;
+  font-weight: 500;
+  color: ${theme.darkBlue};
+  font-size: 20px;
+  white-space: pre-wrap;
+`;
 
 const Slider = () => {
+  const localData = {
+    first: [
+      { title: "Her Alana Özel Günlük Görevlendirmeler" },
+      { title: "Motivasyon Paylaşımları" },
+      { title: "Soru-Cevap Paylaşımları" },
+      { title: "Canlı Yayınlar" },
+    ],
+    second: [
+      { title: "Ayda 2 Kez Görüşme" },
+      { title: "7/24 İletişim" },
+      { title: "7/24 Takip" },
+      { title: "Haftalık Değil Günlük Program" },
+      { title: "Konu Tabloları" },
+      { title: "Deneme Analizi" },
+      { title: "Alışkanlık Geliştirme" },
+    ],
+    third: [
+      { title: "Derece Öğrencisiyle Birebir Görüşme" },
+      { title: "Hedef Belirleme" },
+      { title: "Tecrübe Aktarımı" },
+      { title: "1 Saat Görüşme Süresi" },
+    ],
+  };
   return (
-    <div >
-     <h2>Silder</h2>
-    </div>
+    <Wrap id="slider">
+      <SmallCard>
+        <SmallTitle>Tek Görüşme | 400 TL</SmallTitle>
+        <UlItem>
+          {localData.first.map(({ title }, index) => {
+            return <LiItem key={index}>{title}</LiItem>;
+          })}
+        </UlItem>
+        <Button>
+          <Link
+            to={"/FormApply"}
+            style={{ color: "#fff", textDecoration: "none" }}
+          >
+            Koçluk Al
+          </Link>
+        </Button>
+      </SmallCard>
+      <MainCard>
+        <MassiveTitle>Koçluk | 1800 TL / ay</MassiveTitle>
+        <UlItem>
+          {localData.second.map(({ title }, index) => {
+            return <LiItem key={index}>{title}</LiItem>;
+          })}
+        </UlItem>
+        <Button>
+          <Link
+            to={"/FormApply"}
+            style={{ color: "#fff", textDecoration: "none" }}
+          >
+            Koçluk Al
+          </Link>
+        </Button>
+      </MainCard>
+      <SmallCard2>
+        <SmallTitle>Özel Ders</SmallTitle>
+        <UlItem>
+          {localData.third.map(({ title }, index) => {
+            return <LiItem key={index}>{title}</LiItem>;
+          })}
+        </UlItem>
+        <Button>
+          <Link
+            to={"/FormApply"}
+            style={{ color: "#fff", textDecoration: "none" }}
+          >
+            Koçluk Al
+          </Link>
+        </Button>
+      </SmallCard2>
+    </Wrap>
   );
 };
 
