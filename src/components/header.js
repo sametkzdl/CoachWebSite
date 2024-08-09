@@ -53,8 +53,8 @@ const HamburgerMenu = styled.div`
   transition: all 0.3s ease-in;
   visibility: hidden;
   opacity: 0;
-  ${({ blurOpen }) =>
-    blurOpen &&
+  ${({ bluropen }) =>
+    bluropen &&
     css`
       opacity: 1;
       visibility: visible;
@@ -73,7 +73,7 @@ const HamburgerNav = styled.nav`
 `;
 
 const Header = () => {
-  const { blurOpen, setBlurOpen } = useBlurContext();
+  const { bluropen, setBlurOpen } = useBlurContext();
   const NavigationData = [
     { title: "Fiyatlarımız", direction: "#swiper" },
     { title: "Koçlarımız", direction: "#avatars" },
@@ -102,10 +102,10 @@ const Header = () => {
           </Link>
         </Button>
       </StyledANav>
-      <WrapHamburger onClick={() => setBlurOpen(!blurOpen)}>
+      <WrapHamburger onClick={() => setBlurOpen(!bluropen)}>
         <img src={hamburger} width={40} height={40} alt="Menu" />
       </WrapHamburger>
-      <HamburgerMenu blurOpen={blurOpen} onClick={() => setBlurOpen(!blurOpen)}>
+      <HamburgerMenu bluropen={bluropen ? "active" : undefined} onClick={() => setBlurOpen(!bluropen)}>
         <HamburgerNav>
           {NavigationData.map(({ title, direction }, index) => (
             <StyledA href={direction} key={index}>

@@ -3,9 +3,9 @@ import { createContext, useContext, useState } from "react";
 const BlurContext = createContext();
 
 export const BlurProvider = ({ children }) => {
-  const [blurOpen, setBlurOpen] = useState(false);
+  const [bluropen, setBlurOpen] = useState(false);
   const values = {
-    blurOpen,
+    bluropen,
     setBlurOpen,
   };
   return (

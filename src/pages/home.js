@@ -1,7 +1,7 @@
 import Header from "../components/header";
 import Row from "../components/row";
 import Banner from "../components/banner";
-import Swiper from "../components/swiper";
+import Slider from "../components/slider";
 import Avatar from "../components/avatars";
 import Detail from "../components/detail";
 import Footer from "../components/footer";
@@ -14,8 +14,8 @@ const Wrap = styled.div`
   width: 0;
   height: 0;
   transition: all 0.5s ease;
-  ${({ blurOpen }) =>
-    blurOpen &&
+  ${({ bluropen }) =>
+    bluropen &&
     css`
       background-color: rgb(0, 0, 0, 0.8);
       width: 100%;
@@ -25,19 +25,22 @@ const Wrap = styled.div`
 `;
 
 const Home = () => {
-  const { blurOpen, setBlurOpen } = useBlurContext();
+  const { bluropen, setBlurOpen } = useBlurContext();
   return (
-    <Fragment>
-      <Wrap blurOpen={blurOpen} onClick={() => setBlurOpen(!blurOpen)} />
-      <Header />
-      <Row>
+    <Row>
+      <div style={{position:"relative"}}>
+        <Wrap
+          bluropen={bluropen ? "active" : undefined}
+          onClick={() => setBlurOpen(!bluropen)}
+        />
+        <Header />
         <Banner />
-        <Swiper />
-        <Avatar />
-        <Detail />
-      </Row>
+      </div>
+      <Slider />
+      <Avatar />
+      <Detail />
       <Footer />
-    </Fragment>
+    </Row>
   );
 };
 

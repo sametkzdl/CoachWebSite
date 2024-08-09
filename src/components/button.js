@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../utils/global";
 
 const StyledButton = styled.button`
@@ -13,6 +13,13 @@ const StyledButton = styled.button`
   text-shadow: rgb(43, 43, 40) 1px 0 10px;
   cursor: pointer;
   white-space: nowrap;
+  ${({ big }) =>
+    big &&
+    css`
+      width: 150px;
+      font-size: 24px;
+      padding: 0.5rem 1rem;
+    `}
 `;
 
 const Button = ({ children, ...props }) => {
