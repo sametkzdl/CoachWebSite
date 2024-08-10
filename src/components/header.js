@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { device, theme } from "../utils/global";
 import Button from "./button";
 import styled, { css } from "styled-components";
 import { useBlurContext } from "../context/blurContext";
 import { Example } from "./hamburger";
+import { Fragment } from "react";
 
 const StyledHeader = styled.header`
   background-color: ${theme.dark};
@@ -16,6 +17,7 @@ const StyledHeader = styled.header`
 const LogoTitle = styled.h1`
   display: inline-block;
   font-weight: 700;
+  font-size: 50px;
 `;
 
 const StyledANav = styled.nav`
@@ -77,7 +79,20 @@ const HamburgerNav = styled.nav`
   box-sizing: border-box;
 `;
 
+const FormBackWrap = styled.div`
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
+const FormLogoWrap = styled.div`
+  @media ${device.tablet} {
+    margin-inline: auto;
+  }
+`;
+
 const Header = () => {
+  const params = useLocation();
   const { bluropen, setBlurOpen } = useBlurContext();
   const NavigationData = [
     { title: "Fiyatlarımız", direction: "#slider" },
@@ -87,34 +102,31 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <LogoTitle>
-        <Link style={{ color: "#fff", textDecoration: "none" }} to={"/"}>
-          X Akademi
-        </Link>
-      </LogoTitle>
-      <StyledANav>
-        {NavigationData.map(({ title, direction }, index) => (
-          <StyledA href={direction} key={index}>
-            {title}
-          </StyledA>
-        ))}
-        <Button>
-          <Link
-            to={"/FormApply"}
-            style={{ color: "#fff", textDecoration: "none" }}
-          >
-            Koçluk Al
+      {params.pathname === "/FormApply" ? (
+        <FormLogoWrap>
+          <LogoTitle style={{ marginInline: "auto" }}>
+            <Link style={{ color: "#fff", textDecoration: "none" }} to={"/"}>
+              X Akademi
+            </Link>
+          </LogoTitle>
+        </FormLogoWrap>
+      ) : (
+        <LogoTitle>
+          <Link style={{ color: "#fff", textDecoration: "none" }} to={"/"}>
+            X Akademi
           </Link>
-        </Button>
-      </StyledANav>
-      <WrapHamburger>
-        <Example />
-      </WrapHamburger>
-      <HamburgerMenu
-        bluropen={bluropen ? "active" : undefined}
-        onClick={() => setBlurOpen(!bluropen)}
-      >
-        <HamburgerNav>
+        </LogoTitle>
+      )}
+      {params.pathname === "/FormApply" ? (
+        <FormBackWrap>
+          <Button>
+            <Link to={"/"} style={{ color: "#fff", textDecoration: "none" }}>
+              Ana Sayfa
+            </Link>
+          </Button>
+        </FormBackWrap>
+      ) : (
+        <StyledANav>
           {NavigationData.map(({ title, direction }, index) => (
             <StyledA href={direction} key={index}>
               {title}
@@ -128,8 +140,35 @@ const Header = () => {
               Koçluk Al
             </Link>
           </Button>
-        </HamburgerNav>
-      </HamburgerMenu>
+        </StyledANav>
+      )}
+      {params.pathname === "/FormApply" ? null : (
+        <Fragment>
+          <WrapHamburger>
+            <Example />
+          </WrapHamburger>
+          <HamburgerMenu
+            bluropen={bluropen ? "active" : undefined}
+            onClick={() => setBlurOpen(!bluropen)}
+          >
+            <HamburgerNav>
+              {NavigationData.map(({ title, direction }, index) => (
+                <StyledA href={direction} key={index}>
+                  {title}
+                </StyledA>
+              ))}
+              <Button>
+                <Link
+                  to={"/FormApply"}
+                  style={{ color: "#fff", textDecoration: "none" }}
+                >
+                  Koçluk Al
+                </Link>
+              </Button>
+            </HamburgerNav>
+          </HamburgerMenu>
+        </Fragment>
+      )}
     </StyledHeader>
   );
 };

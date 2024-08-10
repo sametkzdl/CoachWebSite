@@ -1,8 +1,15 @@
+import Header from "../components/header";
+import Row from "../components/row";
+import Footer from "../components/footer";
+import FormCard from "../components/formCard";
+
 const FormApply = () => {
   return (
-    <div>
-      <h2>FormApply</h2>
-    </div>
+    <Row>
+      <Header />
+      <FormCard/>
+      <Footer />
+    </Row>
   );
 };
 
