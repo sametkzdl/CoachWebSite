@@ -1,8 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { device, theme } from "../utils/global";
-import okey from "../public/icons/okey.svg";
 import Button from "./button";
 import { Link } from "react-router-dom";
+
+const cardCss = css`
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: 50px;
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    scale: 1.1;
+    box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
+  }
+`;
 
 const Wrap = styled.div`
   display: flex;
@@ -15,7 +27,7 @@ const Wrap = styled.div`
     ${theme.darkBlue}
   );
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 3.5rem;
   flex-wrap: wrap;
   @media (max-width: 1210px) {
@@ -33,33 +45,21 @@ const Wrap = styled.div`
 `;
 
 const MainCard = styled.div`
-  text-align: center;
-  padding: 2rem 1rem;
+  ${cardCss}
   max-width: 350px;
-  flex-grow: 3;
   background: linear-gradient(to right, #60d6e7, #024dae);
-  border-radius: 50px;
-  border: none;
-  max-width: 350px;
-  box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
   @media (max-width: 1210px) {
     grid-column: 1/-1;
     grid-row: 2;
     justify-self: center;
   }
+ 
 `;
 
 const SmallCard = styled.div`
-  text-align: center;
-  padding: 2rem 1rem;
-  flex-grow: 2;
+  ${cardCss}
   background: linear-gradient(to right, #fff5ae, #ffaaf7);
-  border-radius: 50px;
-  border: none;
   max-width: 330px;
-  width: fit-content;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
   @media (max-width: 1210px) {
     grid-column: 1;
     grid-row: 1;
@@ -68,17 +68,9 @@ const SmallCard = styled.div`
 `;
 
 const SmallCard2 = styled.div`
-  text-align: center;
-  padding: 2rem 1rem;
-  flex-grow: 2;
+  ${cardCss}
   background: linear-gradient(to right, #cdffd9, #95bafe);
-  border-radius: 50px;
-  border: none;
   max-width: 330px;
-  width: fit-content;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
-
   @media (max-width: 1210px) {
     grid-column: 2;
     grid-row: 1;

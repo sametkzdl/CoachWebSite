@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { device, theme } from "../utils/global";
 import Button from "./button";
 import styled, { css } from "styled-components";
-import hamburger from "../public/icons/hamburger.svg";
 import { useBlurContext } from "../context/blurContext";
+import { Example } from "./hamburger";
 
 const StyledHeader = styled.header`
   background-color: ${theme.dark};
@@ -11,7 +11,6 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2.5rem;
-  
 `;
 
 const LogoTitle = styled.h1`
@@ -33,10 +32,10 @@ const StyledA = styled.a`
   color: #fff;
   font-weight: 300;
   font-size: 24px;
-  transition: all .3s;
+  transition: all 0.3s;
   &:hover {
     scale: 1.1;
-    text-shadow: 20px 0 30px #fff,-20px 0 30px #fff ;
+    text-shadow: 20px 0 30px #fff, -20px 0 30px #fff;
   }
 `;
 
@@ -108,10 +107,13 @@ const Header = () => {
           </Link>
         </Button>
       </StyledANav>
-      <WrapHamburger onClick={() => setBlurOpen(!bluropen)}>
-        <img src={hamburger} width={40} height={40} alt="Menu" />
+      <WrapHamburger>
+        <Example />
       </WrapHamburger>
-      <HamburgerMenu bluropen={bluropen ? "active" : undefined} onClick={() => setBlurOpen(!bluropen)}>
+      <HamburgerMenu
+        bluropen={bluropen ? "active" : undefined}
+        onClick={() => setBlurOpen(!bluropen)}
+      >
         <HamburgerNav>
           {NavigationData.map(({ title, direction }, index) => (
             <StyledA href={direction} key={index}>

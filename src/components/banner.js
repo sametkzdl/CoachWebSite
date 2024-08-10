@@ -111,7 +111,14 @@ const Banner = () => {
         </WrapTitles>
         <WrapImg src={grafik} alt="graphic" />
       </WrapBanner>
-      <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems:"center"
+        }}
+      >
         <StyledSpan>daha fazla</StyledSpan>
         <a href="#slider">
           <ArrowImage src={downArrow} />
