@@ -77,7 +77,7 @@ const WrapBanner = styled.div`
 const WrapTitles = styled.div`
   display: flex;
   flex-direction: column;
-  animation: ${TitlesShake} 2.5s ease-in;
+  animation: ${TitlesShake} 1.5s ease-in;
 `;
 
 const TitleA = styled.h2`
@@ -110,7 +110,7 @@ const TitleB = styled.h2`
 const WrapImg = styled.img`
   width: 400px;
   height: 400px;
-  animation: ${ImageShake} 2.5s ease-in;
+  animation: ${ImageShake} 1.5s ease-in;
   @media ${device.tablet} {
     width: 300px;
     height: 300px;

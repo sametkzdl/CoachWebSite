@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useForm, Controller } from "react-hook-form";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import Row from "./row";
 import Button from "./button";
 import { theme } from "../utils/global";
+import { useState } from "react";
 
 const Wrap = styled.div`
   padding: 2rem 2.5rem;
@@ -113,27 +114,81 @@ const StyledButton = styled(Button)`
   margin-inline: auto;
 `;
 
+const Notification = styled.div`
+  display: none;
+  color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #f44336;
+  ${({ show, success }) => {
+    return (
+      show &&
+      css`
+        display: block;
+        box-shadow: 4px 4px 12px rgba(35, 199, 222, 0.3),
+          -4px -4px 12px rgba(35, 199, 222, 0.3);
+        ${success &&
+        css`
+          background-color: #4caf50;
+        `}
+      `
+    );
+  }}
+`;
+
 const Register = () => {
-  const validatePhoneNumber = (phone) => {
-    return phone.startsWith("90") && phone.replace(/[^0-9]/g, "").length === 12;
-  };
+  const [sending, setSending] = useState(false);
+  const [notification, setNotification] = useState({
+    message: "",
+    success: false,
+    show: false,
+  });
+
   const {
-    control,
     register,
     handleSubmit,
-    setValue,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const Submit = (e) => {
+    setSending(!sending);
+    const formEle = document.querySelector("form");
+    const formDatab = new FormData(formEle);
+    fetch(
+      "https://script.google.com/macros/s/AKfycbycoM9SRG4llVIsqkc1vCeR-czezzwHRffJ7urKqlxObQAEU5MigBvewoIvGOEx0zl7vA/exec",
+      {
+        method: "POST",
+        body: formDatab,
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        reset();
+        setNotification({
+          message: "Form successfully submitted!",
+          success: true,
+          show: true,
+        });
+        setSending(false);
+      })
+      .catch((error) => {
+        setNotification({
+          message: "There was an error submitting the form. Please try again.",
+          success: false,
+          show: true,
+        });
+        setSending(false);
+      });
   };
-
   return (
     <Wrap>
       <Row>
         <Title>X Akademi | Başvuru Formu</Title>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+
+        <Form onSubmit={handleSubmit(Submit)}>
           <StyledLabel htmlFor="name">Ad ve Soyad</StyledLabel>
           <Input
             id="name"
@@ -150,37 +205,16 @@ const Register = () => {
             {...register("age", { required: true })}
           />
           {errors.age && <Required>Yaş girilmesi zorunludur</Required>}
-          <StyledLabel htmlFor="telephone">Telefon</StyledLabel>
-          <Controller
-            name="phone"
-            control={control}
-            defaultValue=""
-            rules={{
-              required: true,
-              validate: validatePhoneNumber,
-            }}
-            render={({ field: { value, onChange } }) => (
-              <StyledPhoneInput
-                id="telephone"
-                country={"tr"}
-                value={value}
-                onChange={(phone) => {
-                  onChange(phone);
-                  setValue("phone", phone, { shouldValidate: true });
-                }}
-                onlyCountries={["tr"]} // Sadece Türkiye
-                inputStyle={{
-                  border: "none",
-                  overflow: "hidden",
-                }}
-              />
-            )}
+          <StyledLabel htmlFor="phone">Telefon</StyledLabel>
+          <Input
+            id="phone"
+            placeholder="Telefon Numarası"
+            type="phone"
+            {...register("phone", { required: true })}
           />
+
           {errors.phone && errors.phone.type === "required" && (
             <Required>Telefon girilmesi zorunludur</Required>
-          )}
-          {errors.phone && errors.phone.type === "validate" && (
-            <Required>Geçerli bir Türkiye telefon numarası giriniz</Required>
           )}
           <StyledLabel>Hangi Sınıftasınız?</StyledLabel>
           <div style={{ display: "flex", gap: "20px" }}>
@@ -352,7 +386,10 @@ const Register = () => {
             name="additional"
             {...register("additional")}
           />
-          <StyledButton>Başvur</StyledButton>
+          <StyledButton>{sending ? "Gönderiliyor" : "Başvur"}</StyledButton>
+          <Notification success={notification.success} show={notification.show}>
+            {notification.message}
+          </Notification>
         </Form>
       </Row>
     </Wrap>
