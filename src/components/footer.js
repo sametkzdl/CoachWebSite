@@ -22,6 +22,7 @@ const Title = styled.h3`
   font-size: 40px;
   font-weight: 500;
   letter-spacing: 1px;
+  margin-block: 20px;
 `;
 
 const WrapImages = styled.div`

@@ -6,9 +6,42 @@ import grafik from "../public/images/grafik.png";
 import downArrow from "../public/icons/down-arrow.svg";
 
 const linearShake = keyframes`
- 0% ,100%{ transform: translateY(-4px); }
- 70% { transform: translateY(4px); }
+ 0% ,100%{ transform: translateY(-4px);
+   opacity:0; }
+ 70% { transform: translateY(4px); 
+ opacity:1;  }
+`;
 
+const ImageShake = keyframes`
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translate(-20%, 20%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+`;
+
+const TitlesShake = keyframes`
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translate(0%, -20%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
 `;
 
 const Wrap = styled.div`
@@ -24,11 +57,9 @@ const Wrap = styled.div`
 
 const WrapBanner = styled.div`
   display: flex;
-
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-
   @media ${device.tabletL} {
     flex-direction: column;
   }
@@ -37,6 +68,7 @@ const WrapBanner = styled.div`
 const WrapTitles = styled.div`
   display: flex;
   flex-direction: column;
+  animation: ${TitlesShake} 2s ease-in;
 `;
 
 const TitleA = styled.h2`
@@ -69,13 +101,14 @@ const TitleB = styled.h2`
 const WrapImg = styled.img`
   width: 400px;
   height: 400px;
+  animation: ${ImageShake} 2s ease-in ;
   @media ${device.tablet} {
     width: 300px;
     height: 300px;
   }
   @media ${device.mobileL} {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
   }
 `;
 const StyledSpan = styled.span`
@@ -116,7 +149,7 @@ const Banner = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems:"center"
+          alignItems: "center",
         }}
       >
         <StyledSpan>daha fazla</StyledSpan>
