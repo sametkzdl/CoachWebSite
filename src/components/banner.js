@@ -20,7 +20,12 @@ const ImageShake = keyframes`
 
   20% {
     transform: translate(-20%, 20%);
-    opacity: 1;
+    opacity: 0.1;
+  }
+
+  
+  40% {
+    opacity: 0.3;
   }
   100% {
     transform: translate(0, 0);
@@ -35,8 +40,12 @@ const TitlesShake = keyframes`
   }
 
   20% {
-    transform: translate(0%, -20%);
-    opacity: 1;
+    transform: translate(10%, -20%);
+    opacity: 0.1;
+  }
+
+  40% {
+    opacity: 0.3;
   }
   100% {
     transform: translate(0, 0);
@@ -68,7 +77,7 @@ const WrapBanner = styled.div`
 const WrapTitles = styled.div`
   display: flex;
   flex-direction: column;
-  animation: ${TitlesShake} 2s ease-in;
+  animation: ${TitlesShake} 2.5s ease-in;
 `;
 
 const TitleA = styled.h2`
@@ -101,7 +110,7 @@ const TitleB = styled.h2`
 const WrapImg = styled.img`
   width: 400px;
   height: 400px;
-  animation: ${ImageShake} 2s ease-in ;
+  animation: ${ImageShake} 2.5s ease-in;
   @media ${device.tablet} {
     width: 300px;
     height: 300px;
