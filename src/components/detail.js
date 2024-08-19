@@ -3,18 +3,24 @@ import { device, theme } from "../utils/global";
 import { Link } from "react-router-dom";
 import Button from "./button";
 import spring from "../public/images/hedef.png";
-const WrapBanner = styled.div`
-  display: flex;
+import Footer from "./footer";
+
+const Wrap = styled.div`
   padding: 4rem 2.5rem;
+
   background: linear-gradient(
     to bottom,
     ${theme.darkBlue},
     ${theme.dark},
     ${theme.dark},
     ${theme.dark},
-    ${theme.dark},
+    ${theme.darkBlue},
     ${theme.darkBlue}
   );
+`;
+
+const WrapBanner = styled.div`
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -32,9 +38,9 @@ const WrapTitles = styled.div`
 const TitleA = styled.h2`
   font-size: 6.25rem;
   font-weight: 700;
-  letter-spacing: 3px;
   margin-bottom: 0;
   margin-top: 0;
+  margin-bottom: -4rem;
 `;
 
 const TitleB = styled.h2`
@@ -71,21 +77,24 @@ const WrapImg = styled.img`
 
 const Detail = () => {
   return (
-    <WrapBanner>
-      <WrapTitles>
-        <TitleA>Erken davran</TitleA>
-        <TitleB>derece ol</TitleB>
-        <Button big="true">
-          <Link
-            to={"/FormApply"}
-            style={{ color: "#fff", textDecoration: "none" }}
-          >
-            Koçluk Al
-          </Link>
-        </Button>
-      </WrapTitles>
-      <WrapImg src={spring} alt="graphic" />
-    </WrapBanner>
+    <Wrap>
+      <WrapBanner>
+        <WrapTitles>
+          <TitleA>Erken davran</TitleA>
+          <TitleB>derece ol</TitleB>
+          <Button big="true">
+            <Link
+              to={"/FormApply"}
+              style={{ color: "#fff", textDecoration: "none" }}
+            >
+              Koçluk Al
+            </Link>
+          </Button>
+        </WrapTitles>
+        <WrapImg src={spring} alt="graphic" />
+      </WrapBanner>
+      <Footer />
+    </Wrap>
   );
 };
 

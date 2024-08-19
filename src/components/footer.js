@@ -8,14 +8,7 @@ import telegram from "../public/icons/telegram.svg";
 import myLogo from "../public/icons/myLogo.png";
 const WrapBanner = styled.div`
   position: relative;
-  text-align: center;
-  padding: 4rem 2.5rem 2rem 2.5rem;
-  background: linear-gradient(
-    to bottom,
-    ${theme.darkBlue},
-    ${theme.dark},
-    ${theme.dark}
-  );
+  text-align: center;    
 `;
 
 const Title = styled.h3`

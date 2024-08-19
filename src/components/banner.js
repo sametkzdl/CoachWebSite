@@ -5,6 +5,27 @@ import { device, theme } from "../utils/global";
 import grafik from "../public/images/grafik.png";
 import downArrow from "../public/icons/down-arrow.svg";
 
+const textAnimation = keyframes`
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+`;
+
+const blinkCursor = keyframes`
+  0% {
+    border-right-color: orange;
+  }
+  50% {
+    border-right-color: transparent;
+  }
+  100% {
+    border-right-color: orange;
+  }
+`;
+
 const linearShake = keyframes`
  0% ,100%{ transform: translateY(-4px);
    opacity:0; }
@@ -12,54 +33,24 @@ const linearShake = keyframes`
  opacity:1;  }
 `;
 
-const ImageShake = keyframes`
-  0%, 100% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-
-  20% {
-    transform: translate(-20%, 20%);
-    opacity: 0.1;
-  }
-
-  
-  40% {
-    opacity: 0.3;
-  }
-  100% {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-`;
-
-const TitlesShake = keyframes`
-  0%, 100% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-
-  20% {
-    transform: translate(10%, -20%);
-    opacity: 0.1;
-  }
-
-  40% {
-    opacity: 0.3;
-  }
-  100% {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
+const fadein = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 `;
 
 const Wrap = styled.div`
   padding: 1rem 2.5rem 4rem 2.5rem;
+  height: 100%;
+  margin-top: 5rem;
+  @media ${device.laptop} {
+    height: unset;
+    margin-top: unset;
+  }
   background: linear-gradient(
     to bottom,
     ${theme.dark},
     ${theme.dark},
-    ${theme.dark},
+    ${theme.darkBlue},
     ${theme.darkBlue}
   );
 `;
@@ -77,22 +68,25 @@ const WrapBanner = styled.div`
 const WrapTitles = styled.div`
   display: flex;
   flex-direction: column;
-  animation: ${TitlesShake} 1.5s ease-in;
 `;
 
 const TitleA = styled.h2`
+  border-right: 4px solid orange;
+  white-space: nowrap;
   font-size: 6.25rem;
   font-weight: 700;
   letter-spacing: 3px;
-  margin-bottom: 0;
-  margin-top: 0;
+  overflow: hidden;
+  width: 0;
+  animation: ${textAnimation} 2s forwards,
+    ${blinkCursor} 1.25s step-end infinite;
 `;
 
 const TitleB = styled.h2`
   font-size: 6.25rem;
   font-weight: 700;
   letter-spacing: 3px;
-  margin-top: 5px;
+  margin-top: -3rem;
   margin-bottom: 20px;
   background: linear-gradient(
     to bottom,
@@ -110,7 +104,7 @@ const TitleB = styled.h2`
 const WrapImg = styled.img`
   width: 400px;
   height: 400px;
-  animation: ${ImageShake} 1.5s ease-in;
+  animation: ${fadein} 3s;
   @media ${device.tablet} {
     width: 300px;
     height: 300px;

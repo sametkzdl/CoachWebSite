@@ -37,7 +37,6 @@ const Home = () => {
       <Slider />
       <Avatar />
       <Detail />
-      <Footer />
     </Row>
   );
 };
