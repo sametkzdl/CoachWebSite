@@ -22,7 +22,7 @@ const blinkCursor = keyframes`
     border-right-color: transparent;
   }
   100% {
-    border-right-color: orange;
+    border-right-color: transparent;
   }
 `;
 
@@ -79,7 +79,7 @@ const TitleA = styled.h2`
   overflow: hidden;
   width: 0;
   animation: ${textAnimation} 2s forwards,
-    ${blinkCursor} 1.25s step-end infinite;
+    ${blinkCursor} 1.25s step-end forwards;
 `;
 
 const TitleB = styled.h2`

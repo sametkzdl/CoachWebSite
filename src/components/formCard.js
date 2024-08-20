@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import "react-phone-input-2/lib/style.css";
 import Row from "./row";
 import Button from "./button";
-import { theme } from "../utils/global";
+import { device, theme } from "../utils/global";
 import { useState } from "react";
-import Footer from "../components/footer"
+import Footer from "../components/footer";
 
 const Wrap = styled.div`
   padding: 2rem 2.5rem;
@@ -26,17 +26,19 @@ const Form = styled.form`
   padding: 1.5rem;
   max-width: fit-content;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: min-content min-content;
-  justify-content: center;
-  justify-items: center;
-  gap: 30px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(6, min-content);
   box-shadow: 0px 0px 10px rgba(174, 173, 173, 0.5);
   border-radius: 40px;
   color: black;
-  @media (max-width:600px) {
-   display: flex;
-   flex-direction: column;
+  row-gap: 30px;
+  @media ${device.laptop} {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  @media ${device.mobileL} {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
   }
 `;
 
@@ -109,43 +111,73 @@ const Notification = styled.div`
   margin-bottom: 20px;
   text-align: center;
   border-radius: 4px;
-  background-color: #f44336;
-  ${({ show, success }) => {
-    return (
-      show &&
+  ${({ $show }) => {
+    $show &&
       css`
         display: block;
         box-shadow: 4px 4px 12px rgba(35, 199, 222, 0.3),
           -4px -4px 12px rgba(35, 199, 222, 0.3);
-        ${success &&
-        css`
-          background-color: #4caf50;
-        `}
-      `
-    );
+      `;
   }}
+  background-color: ${({ $success }) => ($success ? "#4caf50" : "#f44336")};
 `;
 
 const FirstWrap = styled.div`
-  max-width: 300px;
-  display: grid;
-  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  grid-column: 1/-1;
   grid-row: 1;
+  justify-content: center;
 `;
 
 const SecondWrap = styled.div`
-  max-width: 300px;
-
-  display: grid;
-  grid-column: 2;
-  grid-row: 1;
-`;
-const ThirdWrap = styled.div`
-  max-width: 300px;
-
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
   grid-column: 1/-1;
   grid-row: 2;
+  justify-content: center;
+`;
+const ThirdWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  grid-column: 1/-1;
+  grid-row: 3;
+  justify-content: center;
+`;
+const FourthWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  grid-column: 1/-1;
+  grid-row: 4;
+  justify-content: center;
+  @media ${device.mobileL} {
+    display: block;
+    text-align: center;
+  }
+`;
+
+const FifthWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1/-1;
+  grid-row: 5;
+  justify-content: center;
+  @media ${device.mobileL} {
+    display: block;
+    text-align: center;
+  }
+`;
+
+const SixthWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-column: 1/-1;
+  grid-row: 6;
+  text-align: center;
 `;
 
 const Register = () => {
@@ -186,7 +218,7 @@ const Register = () => {
           setNotification({
             show: false,
           });
-        }, 3*1000);
+        }, 3 * 1000);
         setSending(false);
       })
       .catch((error) => {
@@ -204,221 +236,287 @@ const Register = () => {
         <Title>X Akademi | Başvuru Formu</Title>
         <Form onSubmit={handleSubmit(Submit)}>
           <FirstWrap>
-            <StyledLabel htmlFor="name">Ad ve Soyad</StyledLabel>
+            <div>
+              <StyledLabel htmlFor="name">Ad ve Soyad</StyledLabel>
 
-            <Input
-              id="name"
-              placeholder="Ad ve Soyad"
-              type="text"
-              {...register("name", { required: true })}
-            />
-            {errors.name && (
-              <Required>Ad ve Soyad girilmesi zorunludur</Required>
-            )}
-            <StyledLabel htmlFor="age">Yaş</StyledLabel>
-            <Input
-              id="age"
-              placeholder="Yaş"
-              type="number"
-              {...register("age", { required: true })}
-            />
-            {errors.age && <Required>Yaş girilmesi zorunludur</Required>}
-            <StyledLabel htmlFor="phone">Telefon</StyledLabel>
-            <Input
-              id="phone"
-              placeholder="Telefon Numarası"
-              type="phone"
-              {...register("phone", { required: true })}
-            />
-
-            {errors.phone && errors.phone.type === "required" && (
-              <Required>Telefon girilmesi zorunludur</Required>
-            )}
-            <StyledLabel>Hangi Sınıftasınız?</StyledLabel>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="11"
-                type="radio"
-                value={"11"}
-                name="class"
-                {...register("class", { required: true })}
+              <Input
+                id="name"
+                placeholder="Ad ve Soyad"
+                type="text"
+                {...register("name", { required: true })}
               />
-              <StyledLabel style={{ color: "white" }} htmlFor="11">
-                11
-              </StyledLabel>
+              {errors.name && (
+                <Required>Ad ve Soyad girilmesi zorunludur</Required>
+              )}
             </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="12"
-                type="radio"
-                value={"12"}
-                name="class"
-                {...register("class", { required: true })}
+            <div>
+              <StyledLabel htmlFor="age">Yaş</StyledLabel>
+              <Input
+                id="age"
+                placeholder="Yaş"
+                type="number"
+                {...register("age", { required: true })}
               />
-              <StyledLabel style={{ color: "white" }} htmlFor="12">
-                12{" "}
-              </StyledLabel>
+              {errors.age && <Required>Yaş girilmesi zorunludur</Required>}
             </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="mezun"
-                type="radio"
-                value={"mezun"}
-                name="class"
-                {...register("class", { required: true })}
+            <div>
+              <StyledLabel htmlFor="phone">Telefon</StyledLabel>
+              <Input
+                id="phone"
+                placeholder="Telefon Numarası"
+                type="phone"
+                {...register("phone", { required: true })}
               />
-              <StyledLabel style={{ color: "white" }} htmlFor="mezun">
-                Mezun{" "}
-              </StyledLabel>
+              {errors.phone && errors.phone.type === "required" && (
+                <Required>Telefon girilmesi zorunludur</Required>
+              )}
             </div>
-            {errors.class && <Required>Sınıf girilmesi zorunludur</Required>}
           </FirstWrap>
           <SecondWrap>
-            <StyledLabel>Alanınız ?</StyledLabel>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="Sayısal"
-                type="checkbox"
-                value={"Sayısal"}
-                name="field"
-                {...register("field", { required: true })}
-              />
-              <StyledLabel style={{ color: "white" }} htmlFor="Sayısal">
-                Sayısal
-              </StyledLabel>
+            <div>
+              <StyledLabel>Hangi Sınıftasınız?</StyledLabel>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="11"
+                  type="radio"
+                  value={"11"}
+                  name="class"
+                  {...register("class", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="11">
+                  11
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="12"
+                  type="radio"
+                  value={"12"}
+                  name="class"
+                  {...register("class", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="12">
+                  12{" "}
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="mezun"
+                  type="radio"
+                  value={"mezun"}
+                  name="class"
+                  {...register("class", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="mezun">
+                  Mezun{" "}
+                </StyledLabel>
+              </div>
+              {errors.class && <Required>Sınıf girilmesi zorunludur</Required>}
             </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="Sözel"
-                type="checkbox"
-                value={"Sözel"}
-                name="field"
-                {...register("field", { required: true })}
-              />
-              <StyledLabel style={{ color: "white" }} htmlFor="Sözel">
-                Sözel
-              </StyledLabel>
+            <div>
+              <StyledLabel>Alanınız ?</StyledLabel>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="Sayısal"
+                  type="checkbox"
+                  value={"Sayısal"}
+                  name="field"
+                  {...register("field", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="Sayısal">
+                  Sayısal
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="Sözel"
+                  type="checkbox"
+                  value={"Sözel"}
+                  name="field"
+                  {...register("field", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="Sözel">
+                  Sözel
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="Eşit Ağırlık"
+                  type="checkbox"
+                  value={"Eşit Ağırlık"}
+                  name="field"
+                  {...register("field", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="Eşit Ağırlık">
+                  Eşit Ağırlık
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="Dil (İngilizce)"
+                  type="checkbox"
+                  value={"Dil (İngilizce)"}
+                  name="field"
+                  {...register("field", { required: true })}
+                />
+                <StyledLabel
+                  style={{ color: "white" }}
+                  htmlFor="Dil (İngilizce)"
+                >
+                  Dil (İngilizce)
+                </StyledLabel>
+              </div>
+              {errors.field && <Required>Alan girilmesi zorunludur</Required>}
             </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="Eşit Ağırlık"
-                type="checkbox"
-                value={"Eşit Ağırlık"}
-                name="field"
-                {...register("field", { required: true })}
-              />
-              <StyledLabel style={{ color: "white" }} htmlFor="Eşit Ağırlık">
-                Eşit Ağırlık
-              </StyledLabel>
-            </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="Dil (İngilizce)"
-                type="checkbox"
-                value={"Dil (İngilizce)"}
-                name="field"
-                {...register("field", { required: true })}
-              />
-              <StyledLabel style={{ color: "white" }} htmlFor="Dil (İngilizce)">
-                Dil (İngilizce)
-              </StyledLabel>
-            </div>
-            {errors.field && <Required>Alan girilmesi zorunludur</Required>}
-            <StyledLabel htmlFor="age">Ortalama TYT Neti ?</StyledLabel>
-            <Input
-              id="age"
-              placeholder="TYT Neti"
-              type="number"
-              name="tyt"
-              {...register("tyt", { required: true })}
-            />
-            {errors.tyt && <Required>TYT Neti girilmesi zorunludur</Required>}
-            <StyledLabel htmlFor="age">Ortalama AYT Neti ?</StyledLabel>
-            <Input
-              id="age"
-              placeholder="AYT Neti"
-              type="number"
-              name="ayt"
-              {...register("ayt", { required: true })}
-            />
-            {errors.ayt && <Required>AYT Neti girilmesi zorunludur</Required>}
           </SecondWrap>
           <ThirdWrap>
-            <StyledLabel>Günde ortalama çalışma süreniz ?</StyledLabel>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="0 - 1.5"
-                type="radio"
-                value={"0 - 1.5"}
-                name="studyTime"
-                {...register("studyTime", { required: true })}
+            <div>
+              <StyledLabel htmlFor="avarageTyt">Ortalama TYT Neti?</StyledLabel>
+              <Input
+                id="avarageTyt"
+                placeholder="TYT Neti"
+                type="number"
+                name="tyt"
+                {...register("tyt", {
+                  required: "TYT Neti girilmesi zorunludur",
+                  min: {
+                    value: 0,
+                    message: "TYT neti sıfırdan küçük olmamalıdır ",
+                  },
+                  max: {
+                    value: 120,
+                    message: "TYT neti 120 büyük olmamalıdır ",
+                  },
+                })}
               />
-              <StyledLabel style={{ color: "white" }} htmlFor="0 - 1.5">
-                0 - 1.5 (saat)
-              </StyledLabel>
+              {errors.tyt && <Required>{errors.tyt.message}</Required>}
             </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="1.5 - 4"
-                type="radio"
-                value={"1.5 - 4"}
-                name="studyTime"
-                {...register("studyTime", { required: true })}
+            <div>
+              <StyledLabel htmlFor="avarageAyt">Ortalama AYT Neti?</StyledLabel>
+              <Input
+                id="avarageAyt"
+                placeholder="AYT Neti"
+                type="number"
+                name="ayt"
+                {...register("ayt", {
+                  required: "AYT Neti girilmesi zorunludur",
+                  min: {
+                    value: 0,
+                    message: "AYT neti sıfırdan küçük olmamalıdır ",
+                  },
+                  max: { value: 80, message: "AYT neti 80 büyük olmamalıdır " },
+                })}
               />
-              <StyledLabel style={{ color: "white" }} htmlFor="1.5 - 4">
-                1.5 - 4 (saat)
-              </StyledLabel>
+              {errors.ayt && <Required>{errors.ayt.message}</Required>}
             </div>
-            <div style={{ display: "flex", gap: "20px" }}>
-              <input
-                id="4 - 6"
-                type="radio"
-                value={"4 - 6"}
-                name="studyTime"
-                {...register("studyTime", { required: true })}
-              />
-              <StyledLabel style={{ color: "white" }} htmlFor="4 - 6">
-                4 - 6 (saat)
-              </StyledLabel>
-            </div>
-            {errors.studyTime && (
-              <Required>Günde ortalama çalışma girilmesi zorunludur</Required>
-            )}
-            <StyledLabel htmlFor="dreamDepartment">
-              Hedefiniz (Sıralama, Üniversite veya Bölüm)
-            </StyledLabel>
-            <Input
-              id="dreamDepartment"
-              placeholder="Hedefiniz"
-              type="text"
-              name="dreamDepartment"
-              {...register("dreamDepartment", { required: true })}
-            />
-            {errors.dreamDepartment && (
-              <Required>Hedefiniz alanının girilmesi zorunludur</Required>
-            )}
-            <StyledLabel htmlFor="additional">
-              Eklemek istedikleriniz ...
-            </StyledLabel>
-            <Textarea
-              rows={5}
-              id="additional"
-              placeholder="Eklemek istedikleriniz ..."
-              type="text"
-              name="additional"
-              {...register("additional")}
-            />
-            <StyledButton>{sending ? "Gönderiliyor" : "Başvur"}</StyledButton>
-            <Notification
-              success={notification.success}
-              show={notification.show}
-            >
-              {notification.message}
-            </Notification>
           </ThirdWrap>
+          <FourthWrap>
+            <div>
+              <StyledLabel>Günde ortalama çalışma süreniz ?</StyledLabel>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  justifyContent: "center",
+                }}
+              >
+                <input
+                  id="0 - 1.5"
+                  type="radio"
+                  value={"0 - 1.5"}
+                  name="studyTime"
+                  {...register("studyTime", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="0 - 1.5">
+                  0 - 1.5 (saat)
+                </StyledLabel>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  justifyContent: "center",
+                }}
+              >
+                <input
+                  id="1.5 - 4"
+                  type="radio"
+                  value={"1.5 - 4"}
+                  name="studyTime"
+                  {...register("studyTime", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="1.5 - 4">
+                  1.5 - 4 (saat)
+                </StyledLabel>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  justifyContent: "center",
+                }}
+              >
+                <input
+                  id="4 - 6"
+                  type="radio"
+                  value={"4 - 6"}
+                  name="studyTime"
+                  {...register("studyTime", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="4 - 6">
+                  4 - 6 (saat)
+                </StyledLabel>
+              </div>
+              {errors.studyTime && (
+                <Required>Günde ortalama çalışma girilmesi zorunludur</Required>
+              )}
+            </div>
+          </FourthWrap>
+          <FifthWrap>
+            <div style={{ textAlign: "center" }}>
+              <StyledLabel htmlFor="dreamDepartment">
+                Hedefiniz (Sıralama, Üniversite veya Bölüm)
+              </StyledLabel>
+              <Input
+                style={{ marginInline: "auto" }}
+                id="dreamDepartment"
+                placeholder="Hedefiniz"
+                type="text"
+                name="dreamDepartment"
+                {...register("dreamDepartment", { required: true })}
+              />
+              {errors.dreamDepartment && (
+                <Required>Hedefiniz alanının girilmesi zorunludur</Required>
+              )}
+            </div>
+          </FifthWrap>
+          <SixthWrap>
+            <div style={{ display: "grid" }}>
+              <StyledLabel htmlFor="additional">
+                Eklemek istedikleriniz ...
+              </StyledLabel>
+              <Textarea
+                rows={5}
+                id="additional"
+                placeholder="Eklemek istedikleriniz ..."
+                type="text"
+                name="additional"
+                {...register("additional")}
+              />
+            </div>
+            <div>
+              <StyledButton>{sending ? "Gönderiliyor" : "Başvur"}</StyledButton>
+              <Notification
+                $success={notification.success}
+                $show={notification.show}
+              >
+                {notification.message}
+              </Notification>
+            </div>
+          </SixthWrap>
         </Form>
       </Row>
-      <Footer/>
+      <Footer />
     </Wrap>
   );
 };
