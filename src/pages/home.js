@@ -4,9 +4,9 @@ import Banner from "../components/banner";
 import Slider from "../components/slider";
 import Avatar from "../components/avatars";
 import Detail from "../components/detail";
-import Footer from "../components/footer";
 import styled, { css } from "styled-components";
 import { useBlurContext } from "../context/blurContext";
+import { Fragment } from "react";
 const Wrap = styled.div`
   position: absolute;
   width: 0;
@@ -26,14 +26,17 @@ const Home = () => {
   const { bluropen, setBlurOpen } = useBlurContext();
   return (
     <Row>
-      <div style={{position:"relative"}}>
+      <div style={{ position: "relative" }}>
         <Wrap
           bluropen={bluropen ? "active" : undefined}
           onClick={() => setBlurOpen(!bluropen)}
         />
-        <Header />
-        <Banner />
+        <Fragment>
+          <Header />
+          <Banner />
+        </Fragment>
       </div>
+
       <Slider />
       <Avatar />
       <Detail />
