@@ -105,20 +105,17 @@ const StyledButton = styled(Button)`
 `;
 
 const Notification = styled.div`
-  display: none;
+  display: ${({ $show }) => ($show ? "block" : "none")};
   color: white;
   padding: 15px;
   margin-bottom: 20px;
   text-align: center;
   border-radius: 4px;
-  ${({ $show }) => {
+  box-shadow: ${({ $show }) =>
     $show &&
-      css`
-        display: block;
-        box-shadow: 4px 4px 12px rgba(35, 199, 222, 0.3),
-          -4px -4px 12px rgba(35, 199, 222, 0.3);
-      `;
-  }}
+    css`
+      4px 4px 12px rgba(35, 199, 222, 0.3), -4px -4px 12px rgba(35, 199, 222, 0.3);
+    `};
   background-color: ${({ $success }) => ($success ? "#4caf50" : "#f44336")};
 `;
 
@@ -385,7 +382,7 @@ const Register = () => {
                   },
                   max: {
                     value: 120,
-                    message: "TYT neti 120 büyük olmamalıdır ",
+                    message: "TYT neti 120 den büyük olmamalıdır ",
                   },
                 })}
               />
@@ -404,7 +401,7 @@ const Register = () => {
                     value: 0,
                     message: "AYT neti sıfırdan küçük olmamalıdır ",
                   },
-                  max: { value: 80, message: "AYT neti 80 büyük olmamalıdır " },
+                  max: { value: 80, message: "AYT neti 80 den büyük olmamalıdır " },
                 })}
               />
               {errors.ayt && <Required>{errors.ayt.message}</Required>}
