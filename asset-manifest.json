@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CoachWebSite/static/css/main.5318eb9a.css",
-    "main.js": "/CoachWebSite/static/js/main.31b0e5cb.js",
+    "main.js": "/CoachWebSite/static/js/main.7d1a6c45.js",
     "static/media/myLogo.png": "/CoachWebSite/static/media/myLogo.31964dc754cc45d2ee29.png",
     "static/media/hedef.png": "/CoachWebSite/static/media/hedef.b20961ec2435892718d5.png",
     "static/media/besir_mini.png": "/CoachWebSite/static/media/besir_mini.8860a6a79ba5283c9d96.png",
@@ -18,10 +18,10 @@
     "static/media/telegram.svg": "/CoachWebSite/static/media/telegram.efec7397bf6526a0bbf43a903063f623.svg",
     "index.html": "/CoachWebSite/index.html",
     "main.5318eb9a.css.map": "/CoachWebSite/static/css/main.5318eb9a.css.map",
-    "main.31b0e5cb.js.map": "/CoachWebSite/static/js/main.31b0e5cb.js.map"
+    "main.7d1a6c45.js.map": "/CoachWebSite/static/js/main.7d1a6c45.js.map"
   },
   "entrypoints": [
     "static/css/main.5318eb9a.css",
-    "static/js/main.31b0e5cb.js"
+    "static/js/main.7d1a6c45.js"
   ]
 }
