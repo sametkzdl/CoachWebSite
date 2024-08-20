@@ -16,8 +16,8 @@ function App() {
 
 function Error() {
   return (
-    <div>
-      <h2>This Page İs Not Found</h2>
+    <div >
+      <h2>Böyle bir sayfa bulunamadı</h2>
     </div>
   );
 }
