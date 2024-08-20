@@ -7,7 +7,7 @@ function App() {
     <Fragment>
       <BrowserRouter basename="/CoachWebSite">
         <Routes>
-          <Route path="/CoachWebSite" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/FormApply" element={<FormApply />} />
           <Route path={"*"} element={<Error />} />
         </Routes>
