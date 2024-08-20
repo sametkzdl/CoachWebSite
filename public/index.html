@@ -8,6 +8,12 @@
       name="description"
       content="X Akademia"
     />
+    <script type="text/javascript">
+      var target = window.location.pathname;
+      if (!target.startsWith('/CoachWebSite')) {
+        window.location.replace('/CoachWebSite' + target);
+      }
+    </script>
     <title>X Akademi</title>
   </head>
   <body>
