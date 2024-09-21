@@ -5,7 +5,7 @@ import FormApply from "./pages/form";
 function App() {
   return (
     <Fragment>
-      <BrowserRouter basename="/CoachWebSite">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/FormApply" element={<FormApply />} />
