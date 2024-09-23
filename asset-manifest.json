@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.5318eb9a.css",
-    "main.js": "/static/js/main.515a6f2c.js",
-    "static/media/myLogo.png": "/static/media/myLogo.31964dc754cc45d2ee29.png",
-    "static/media/hedef.png": "/static/media/hedef.b20961ec2435892718d5.png",
-    "static/media/besir_mini.png": "/static/media/besir_mini.8860a6a79ba5283c9d96.png",
-    "static/media/yunusemre_mini.png": "/static/media/yunusemre_mini.44874cd7a4329f5c27ed.png",
-    "static/media/zahid_mini.png": "/static/media/zahid_mini.1742af0ace856b219911.png",
-    "static/media/zekeriya_mini.png": "/static/media/zekeriya_mini.7a818f4ea09b6dc9e6a7.png",
-    "static/media/mustafa_mini.png": "/static/media/mustafa_mini.e05c1a2d557b52c31f55.png",
-    "static/media/grafik.png": "/static/media/grafik.91ab65a69a34f061bc26.png",
-    "static/media/instagram.svg": "/static/media/instagram.5a506f085251062e240952635534b81d.svg",
-    "static/media/twitter.svg": "/static/media/twitter.a6d85656c79226df77568629e74f4c24.svg",
-    "static/media/linkedin.svg": "/static/media/linkedin.a01468aead1f2564e1650be1443dd10e.svg",
-    "static/media/email.svg": "/static/media/email.7b65e818256dc96f46f7545bee9d522f.svg",
-    "static/media/down-arrow.svg": "/static/media/down-arrow.295384c77a03bf8780c5aebd21464eae.svg",
-    "static/media/telegram.svg": "/static/media/telegram.efec7397bf6526a0bbf43a903063f623.svg",
-    "index.html": "/index.html",
-    "main.5318eb9a.css.map": "/static/css/main.5318eb9a.css.map",
-    "main.515a6f2c.js.map": "/static/js/main.515a6f2c.js.map"
+    "main.css": "/CoachWebSite/static/css/main.5318eb9a.css",
+    "main.js": "/CoachWebSite/static/js/main.b7829138.js",
+    "static/media/myLogo.png": "/CoachWebSite/static/media/myLogo.31964dc754cc45d2ee29.png",
+    "static/media/hedef.png": "/CoachWebSite/static/media/hedef.b20961ec2435892718d5.png",
+    "static/media/besir_mini.png": "/CoachWebSite/static/media/besir_mini.8860a6a79ba5283c9d96.png",
+    "static/media/yunusemre_mini.png": "/CoachWebSite/static/media/yunusemre_mini.44874cd7a4329f5c27ed.png",
+    "static/media/zahid_mini.png": "/CoachWebSite/static/media/zahid_mini.1742af0ace856b219911.png",
+    "static/media/zekeriya_mini.png": "/CoachWebSite/static/media/zekeriya_mini.7a818f4ea09b6dc9e6a7.png",
+    "static/media/mustafa_mini.png": "/CoachWebSite/static/media/mustafa_mini.e05c1a2d557b52c31f55.png",
+    "static/media/grafik.png": "/CoachWebSite/static/media/grafik.91ab65a69a34f061bc26.png",
+    "static/media/instagram.svg": "/CoachWebSite/static/media/instagram.5a506f085251062e240952635534b81d.svg",
+    "static/media/twitter.svg": "/CoachWebSite/static/media/twitter.a6d85656c79226df77568629e74f4c24.svg",
+    "static/media/linkedin.svg": "/CoachWebSite/static/media/linkedin.a01468aead1f2564e1650be1443dd10e.svg",
+    "static/media/email.svg": "/CoachWebSite/static/media/email.7b65e818256dc96f46f7545bee9d522f.svg",
+    "static/media/down-arrow.svg": "/CoachWebSite/static/media/down-arrow.295384c77a03bf8780c5aebd21464eae.svg",
+    "static/media/telegram.svg": "/CoachWebSite/static/media/telegram.efec7397bf6526a0bbf43a903063f623.svg",
+    "index.html": "/CoachWebSite/index.html",
+    "main.5318eb9a.css.map": "/CoachWebSite/static/css/main.5318eb9a.css.map",
+    "main.b7829138.js.map": "/CoachWebSite/static/js/main.b7829138.js.map"
   },
   "entrypoints": [
     "static/css/main.5318eb9a.css",
-    "static/js/main.515a6f2c.js"
+    "static/js/main.b7829138.js"
   ]
 }
