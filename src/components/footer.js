@@ -8,7 +8,7 @@ import telegram from "../public/icons/telegram.svg";
 import myLogo from "../public/icons/myLogo.png";
 const WrapBanner = styled.div`
   position: relative;
-  text-align: center;    
+  text-align: center;
 `;
 
 const Title = styled.h3`
@@ -44,20 +44,22 @@ const Footer = () => {
     <WrapBanner id="footer">
       <Title>Bize Ulaşın</Title>
       <WrapImages>
-        <a href="https://www.linkedin.com/">
+        <a
+          href="https://www.linkedin.com/in/mustafa-ocak-74958721b/"
+        >
           <MediaImg src={linkedin} alt="linkedin social media" />
         </a>
-        <a href="mailto:sametkazdal_53@outlook.com">
+        <a href="mailto:mstfocak123@gmail.com">
           {" "}
           <MediaImg src={email} alt="email social media" />
         </a>
         <a href="https://x.com/?lang=tr">
           <MediaImg src={twitter} alt="twitter social media" />
         </a>
-        <a href="https://instagram.com">
+        <a href="https://www.instagram.com/xakademixyz">
           <MediaImg src={instagram} alt="instagram social media" />
         </a>
-        <a href="https://web.telegram.org/k/">
+        <a href="https://t.me/xakademiyks">
           <MediaImg src={telegram} alt="telegram social media" />
         </a>
       </WrapImages>

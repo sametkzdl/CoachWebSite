@@ -53,7 +53,6 @@ const MainCard = styled.div`
     grid-row: 2;
     justify-self: center;
   }
- 
 `;
 
 const SmallCard = styled.div`
@@ -120,10 +119,10 @@ const LiItem = styled.li`
 const Slider = () => {
   const localData = {
     first: [
-      { title: "Her Alana Özel Günlük Görevlendirmeler" },
-      { title: "Motivasyon Paylaşımları" },
-      { title: "Soru-Cevap Paylaşımları" },
-      { title: "Canlı Yayınlar" },
+      { title: "Derece Öğrencisiyle Birebir Görüşme" },
+      { title: "Hedef Belirleme" },
+      { title: "Tecrübe Aktarımı" },
+      { title: "1 Saat Görüşme Süresi" },
     ],
     second: [
       { title: "Ayda 2 Kez Görüşme" },
@@ -135,10 +134,11 @@ const Slider = () => {
       { title: "Alışkanlık Geliştirme" },
     ],
     third: [
-      { title: "Derece Öğrencisiyle Birebir Görüşme" },
-      { title: "Hedef Belirleme" },
-      { title: "Tecrübe Aktarımı" },
-      { title: "1 Saat Görüşme Süresi" },
+      { title: "Derece Öğrencilerinden Özel Ders" },
+      { title: "Üst Kalite Soru Çözüm" },
+      { title: "Verimli Konu Anlatımı" },
+      { title: "Kaynak + Not Desteği" },
+      { title: "Yüz yüze veya Online" },
     ],
   };
   return (
@@ -155,7 +155,7 @@ const Slider = () => {
             to={"/FormApply"}
             style={{ color: "#fff", textDecoration: "none" }}
           >
-            Koçluk Al
+            Başvur
           </Link>
         </Button>
       </SmallCard>
@@ -184,10 +184,10 @@ const Slider = () => {
         </UlItem>
         <Button>
           <Link
-            to={"/FormApply"}
+            to={"https://www.instagram.com/xakademixyz/"}
             style={{ color: "#fff", textDecoration: "none" }}
           >
-            Koçluk Al
+            DM gönder
           </Link>
         </Button>
       </SmallCard2>

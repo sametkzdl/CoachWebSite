@@ -401,7 +401,10 @@ const Register = () => {
                     value: 0,
                     message: "AYT neti sıfırdan küçük olmamalıdır ",
                   },
-                  max: { value: 80, message: "AYT neti 80 den büyük olmamalıdır " },
+                  max: {
+                    value: 80,
+                    message: "AYT neti 80 den büyük olmamalıdır ",
+                  },
                 })}
               />
               {errors.ayt && <Required>{errors.ayt.message}</Required>}
@@ -464,6 +467,24 @@ const Register = () => {
                   4 - 6 (saat)
                 </StyledLabel>
               </div>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  justifyContent: "center",
+                }}
+              >
+                <input
+                  id="6+"
+                  type="radio"
+                  value={"6+"}
+                  name="studyTime"
+                  {...register("studyTime", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="6+">
+                  6+ (saat)
+                </StyledLabel>
+              </div>
               {errors.studyTime && (
                 <Required>Günde ortalama çalışma girilmesi zorunludur</Required>
               )}
@@ -490,7 +511,8 @@ const Register = () => {
           <SixthWrap>
             <div style={{ display: "grid" }}>
               <StyledLabel htmlFor="additional">
-                Eklemek istedikleriniz ...
+                Eklemek istedikleriniz <br/> (Tek Görüşme için başvurduysanız burada
+                belirtebilirsiniz)
               </StyledLabel>
               <Textarea
                 rows={5}
