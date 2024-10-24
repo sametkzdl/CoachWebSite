@@ -144,7 +144,7 @@ const Slider = () => {
   return (
     <Wrap id="slider">
       <SmallCard>
-        <SmallTitle>Tek Görüşme | 400 TL</SmallTitle>
+        <SmallTitle>Tek Görüşme | 600 TL</SmallTitle>
         <UlItem>
           {localData.first.map(({ title }, index) => {
             return <LiItem key={index}>{title}</LiItem>;
@@ -160,7 +160,7 @@ const Slider = () => {
         </Button>
       </SmallCard>
       <MainCard>
-        <MassiveTitle>Koçluk | 1800 TL / ay</MassiveTitle>
+        <MassiveTitle>Koçluk | 2000 TL / ay</MassiveTitle>
         <UlItem>
           {localData.second.map(({ title }, index) => {
             return <LiItem key={index}>{title}</LiItem>;
