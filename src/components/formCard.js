@@ -27,7 +27,7 @@ const Form = styled.form`
   max-width: fit-content;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(6, min-content);
+  grid-template-rows: repeat(7, min-content);
   box-shadow: 0px 0px 10px rgba(174, 173, 173, 0.5);
   border-radius: 40px;
   color: black;
@@ -43,9 +43,13 @@ const Form = styled.form`
 `;
 
 const StyledLabel = styled.label`
-  font-size: 26px;
-  color: ${[theme.lightBlue]};
+  font-size: 22px;
+  color: #fff;
   font-weight: 600;
+  margin-block: 8px;
+  @media ${device.mobileL} {
+    font-size: 16px;
+  }
 `;
 
 const Input = styled.input`
@@ -97,6 +101,15 @@ const Title = styled.h3`
   display: block;
   text-align: center;
   margin-block: 30px;
+`;
+
+const SubTitle = styled.h4`
+  font-size: 26px;
+  color: ${theme.lightBlue};
+  font-weight: 600;
+  @media ${device.mobileL} {
+    font-size: 22px;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -157,6 +170,15 @@ const FourthWrap = styled.div`
   }
 `;
 
+const AdditionalRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  grid-column: 1/-1;
+  grid-row: 6;
+  justify-content: center;
+`;
+
 const FifthWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -173,8 +195,14 @@ const SixthWrap = styled.div`
   display: flex;
   flex-direction: column;
   grid-column: 1/-1;
-  grid-row: 6;
+  grid-row: 7;
   text-align: center;
+`;
+
+const WrapCount = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 `;
 
 const Register = () => {
@@ -234,7 +262,7 @@ const Register = () => {
         <Form onSubmit={handleSubmit(Submit)}>
           <FirstWrap>
             <div>
-              <StyledLabel htmlFor="name">Ad ve Soyad</StyledLabel>
+              <SubTitle htmlFor="name">Ad ve Soyad</SubTitle>
 
               <Input
                 id="name"
@@ -247,7 +275,7 @@ const Register = () => {
               )}
             </div>
             <div>
-              <StyledLabel htmlFor="age">Yaş</StyledLabel>
+              <SubTitle htmlFor="age">Yaş</SubTitle>
               <Input
                 id="age"
                 placeholder="Yaş"
@@ -257,7 +285,7 @@ const Register = () => {
               {errors.age && <Required>Yaş girilmesi zorunludur</Required>}
             </div>
             <div>
-              <StyledLabel htmlFor="phone">Telefon</StyledLabel>
+              <SubTitle htmlFor="phone">Telefon</SubTitle>
               <Input
                 id="phone"
                 placeholder="Telefon Numarası"
@@ -271,7 +299,7 @@ const Register = () => {
           </FirstWrap>
           <SecondWrap>
             <div>
-              <StyledLabel>Hangi Sınıftasınız?</StyledLabel>
+              <SubTitle>Hangi Sınıftasınız?</SubTitle>
               <div style={{ display: "flex", gap: "20px" }}>
                 <input
                   id="11"
@@ -311,7 +339,7 @@ const Register = () => {
               {errors.class && <Required>Sınıf girilmesi zorunludur</Required>}
             </div>
             <div>
-              <StyledLabel>Alanınız ?</StyledLabel>
+              <SubTitle>Alanınız ?</SubTitle>
               <div style={{ display: "flex", gap: "20px" }}>
                 <input
                   id="Sayısal"
@@ -368,7 +396,7 @@ const Register = () => {
           </SecondWrap>
           <ThirdWrap>
             <div>
-              <StyledLabel htmlFor="avarageTyt">Ortalama TYT Neti?</StyledLabel>
+              <SubTitle htmlFor="avarageTyt">Ortalama TYT Neti?</SubTitle>
               <Input
                 id="avarageTyt"
                 placeholder="TYT Neti"
@@ -389,7 +417,7 @@ const Register = () => {
               {errors.tyt && <Required>{errors.tyt.message}</Required>}
             </div>
             <div>
-              <StyledLabel htmlFor="avarageAyt">Ortalama AYT Neti?</StyledLabel>
+              <SubTitle htmlFor="avarageAyt">Ortalama AYT Neti?</SubTitle>
               <Input
                 id="avarageAyt"
                 placeholder="AYT Neti"
@@ -412,50 +440,32 @@ const Register = () => {
           </ThirdWrap>
           <FourthWrap>
             <div>
-              <StyledLabel>Günde ortalama çalışma süreniz ?</StyledLabel>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "20px",
-                  justifyContent: "center",
-                }}
-              >
+              <SubTitle>Günde ortalama çalışma süreniz ?</SubTitle>
+              <WrapCount>
                 <input
-                  id="0 - 1.5"
+                  id="0 - 2"
                   type="radio"
-                  value={"0 - 1.5"}
+                  value={"0 - 2"}
                   name="studyTime"
                   {...register("studyTime", { required: true })}
                 />
-                <StyledLabel style={{ color: "white" }} htmlFor="0 - 1.5">
-                  0 - 1.5 (saat)
+                <StyledLabel style={{ color: "white" }} htmlFor="0 - 2">
+                  0 - 2 (saat)
                 </StyledLabel>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "20px",
-                  justifyContent: "center",
-                }}
-              >
+              </WrapCount>
+              <WrapCount>
                 <input
-                  id="1.5 - 4"
+                  id="2 - 4"
                   type="radio"
-                  value={"1.5 - 4"}
+                  value={"2 - 4"}
                   name="studyTime"
                   {...register("studyTime", { required: true })}
                 />
-                <StyledLabel style={{ color: "white" }} htmlFor="1.5 - 4">
-                  1.5 - 4 (saat)
+                <StyledLabel style={{ color: "white" }} htmlFor="2 - 4">
+                  2 - 4 (saat)
                 </StyledLabel>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "20px",
-                  justifyContent: "center",
-                }}
-              >
+              </WrapCount>
+              <WrapCount>
                 <input
                   id="4 - 6"
                   type="radio"
@@ -466,35 +476,127 @@ const Register = () => {
                 <StyledLabel style={{ color: "white" }} htmlFor="4 - 6">
                   4 - 6 (saat)
                 </StyledLabel>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "20px",
-                  justifyContent: "center",
-                }}
-              >
+              </WrapCount>
+              <WrapCount>
                 <input
-                  id="6+"
+                  id="6 - 8"
                   type="radio"
-                  value={"6+"}
+                  value={"6 - 8"}
                   name="studyTime"
                   {...register("studyTime", { required: true })}
                 />
-                <StyledLabel style={{ color: "white" }} htmlFor="6+">
-                  6+ (saat)
+                <StyledLabel style={{ color: "white" }} htmlFor="6 - 8">
+                  6 - 8 (saat)
                 </StyledLabel>
-              </div>
+              </WrapCount>
+              <WrapCount>
+                <input
+                  id="8+"
+                  type="radio"
+                  value={"8+"}
+                  name="studyTime"
+                  {...register("studyTime", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="8+">
+                  8+ (saat)
+                </StyledLabel>
+              </WrapCount>
               {errors.studyTime && (
                 <Required>Günde ortalama çalışma girilmesi zorunludur</Required>
               )}
             </div>
           </FourthWrap>
+          <AdditionalRow>
+            <div>
+              <SubTitle>Koçluk alma konusunda ?</SubTitle>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="okey"
+                  type="radio"
+                  value={"Kararım net ve olumlu, koçluk almaya hazırım"}
+                  name="coachPlan"
+                  {...register("coachPlan", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="okey">
+                  🚀 Kararım net ve olumlu, koçluk almaya hazırım
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="maybe"
+                  type="radio"
+                  value={"Emin değilim, sorularım var"}
+                  name="coachPlan"
+                  {...register("coachPlan", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="maybe">
+                  🤔 Emin değilim, sorularım var
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="moneyProblem"
+                  type="radio"
+                  value={"Eminim ancak parasal olarak hazır değilim"}
+                  name="coachPlan"
+                  {...register("coachPlan", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="moneyProblem">
+                  😬 Eminim ancak parasal olarak hazır değilim
+                </StyledLabel>
+              </div>
+              {errors.coachPlan && (
+                <Required>Bu alanın girilmesi zorunludur</Required>
+              )}
+            </div>
+            <div>
+              <SubTitle>Koçluk hakkında bilgi almak için ?</SubTitle>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="whatsapp"
+                  type="checkbox"
+                  value={"Whatsapp'tan sorularımı cevaplamanız yeterli"}
+                  name="coachAbout"
+                  {...register("coachAbout", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="whatsapp">
+                  💬 Whatsapp'tan sorularımı cevaplamanız yeterli
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="call"
+                  type="checkbox"
+                  value={"Aranmak istiyorum"}
+                  name="coachAbout"
+                  {...register("coachAbout", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="call">
+                  ☎ Aranmak istiyorum
+                </StyledLabel>
+              </div>
+              <div style={{ display: "flex", gap: "20px" }}>
+                <input
+                  id="faceToFace"
+                  type="checkbox"
+                  value={"Görüntülü görüşme gerçekleştirmek istiyorum"}
+                  name="coachAbout"
+                  {...register("coachAbout", { required: true })}
+                />
+                <StyledLabel style={{ color: "white" }} htmlFor="faceToFace">
+                  📸 Görüntülü görüşme gerçekleştirmek istiyorum
+                </StyledLabel>
+              </div>
+              {errors.coachAbout && (
+                <Required>Bu alanın girilmesi zorunludur</Required>
+              )}
+            </div>
+          </AdditionalRow>
           <FifthWrap>
             <div style={{ textAlign: "center" }}>
-              <StyledLabel htmlFor="dreamDepartment">
+              <SubTitle htmlFor="dreamDepartment">
                 Hedefiniz (Sıralama, Üniversite veya Bölüm)
-              </StyledLabel>
+              </SubTitle>
               <Input
                 style={{ marginInline: "auto" }}
                 id="dreamDepartment"
@@ -510,10 +612,10 @@ const Register = () => {
           </FifthWrap>
           <SixthWrap>
             <div style={{ display: "grid" }}>
-              <StyledLabel htmlFor="additional">
-                Eklemek istedikleriniz <br/> (Tek Görüşme için başvurduysanız burada
-                belirtebilirsiniz)
-              </StyledLabel>
+              <SubTitle htmlFor="additional">
+                Eklemek istedikleriniz <br /> (Tek Görüşme için başvurduysanız
+                burada belirtebilirsiniz)
+              </SubTitle>
               <Textarea
                 rows={5}
                 id="additional"

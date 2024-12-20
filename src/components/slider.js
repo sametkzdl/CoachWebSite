@@ -2,6 +2,12 @@ import styled, { css } from "styled-components";
 import { device, theme } from "../utils/global";
 import Button from "./button";
 import { Link } from "react-router-dom";
+import calender from "../public/icons/calender.png";
+import profile from "../public/icons/profile.png";
+import tel from "../public/icons/tel.png";
+import community from "../public/icons/community.png";
+import video from "../public/icons/video.png";
+import king from "../public/icons/king.png";
 
 const cardCss = css`
   text-align: center;
@@ -10,15 +16,20 @@ const cardCss = css`
   border: none;
   transition: all 0.3s;
   cursor: pointer;
+  max-width: 600px;
   &:hover {
-    scale: 1.1;
+    scale: 1.05;
     box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
   }
 `;
 
 const Wrap = styled.div`
-  display: flex;
-  padding: 6rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content min-content;
+  padding: 6rem 2rem;
+  justify-content: center;
+  gap: 20px;
   background: linear-gradient(
     to bottom,
     ${theme.darkBlue},
@@ -26,77 +37,55 @@ const Wrap = styled.div`
     ${theme.dark},
     ${theme.darkBlue}
   );
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 3.5rem;
-  flex-wrap: wrap;
-  @media (max-width: 1210px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    align-items: center;
-  }
-  @media ${device.tablet} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+  @media ${device.tabletL} {
+    grid-template-columns: 1fr;
   }
 `;
 
 const MainCard = styled.div`
   ${cardCss}
-  max-width: 350px;
-  background: linear-gradient(to right, #60d6e7, #024dae);
-  @media (max-width: 1210px) {
-    grid-column: 1/-1;
-    grid-row: 2;
-    justify-self: center;
+  background-color: #002b5b;
+  grid-column: 1;
+  grid-row: 1/-1;
+  justify-self: center;
+  align-self: center;
+  @media ${device.tabletL} {
+    grid-row: 1;
   }
 `;
 
 const SmallCard = styled.div`
   ${cardCss}
-  background: linear-gradient(to right, #fff5ae, #ffaaf7);
-  max-width: 330px;
-  @media (max-width: 1210px) {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: right;
+  background-color: #00669c;
+  justify-self: center;
+  width: 100%;
+  @media ${device.tabletL} {
+    grid-row: 2;
+    width: auto;
   }
 `;
 
 const SmallCard2 = styled.div`
   ${cardCss}
-  background: linear-gradient(to right, #cdffd9, #95bafe);
-  max-width: 330px;
-  @media (max-width: 1210px) {
-    grid-column: 2;
-    grid-row: 1;
+  background-color: #21486f;
+  justify-self: center;
+  width: 100%;
+  @media ${device.tabletL} {
+    grid-row: 3;
+    width: auto;
   }
 `;
 
-const MassiveTitle = styled.h3`
+const Title = styled.h3`
   white-space: nowrap;
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 0;
-  border-bottom: 4px solid #fff;
   padding-bottom: 10px;
+  color: #ffde59;
   @media ${device.tablet} {
     font-size: 24px;
-  }
-`;
-
-const SmallTitle = styled.h3`
-  white-space: nowrap;
-  font-size: 24px;
-  font-weight: 500;
-  margin-top: 0;
-  border-bottom: 4px solid #fff;
-  padding-bottom: 10px;
-  @media ${device.tablet} {
-    font-size: 20px;
+    white-space: pre-wrap;
   }
 `;
 
@@ -107,89 +96,134 @@ const UlItem = styled.ul`
 `;
 
 const LiItem = styled.li`
-  white-space: auto;
   position: relative;
-  margin-block: 12px;
-  font-weight: 500;
-  color: ${theme.darkBlue};
+  display: flex;
+  margin-block: 16px;
+  font-weight: 400;
   font-size: 20px;
-  white-space: pre-wrap;
+  width: 75%;
+  gap: 30px;
+  margin-inline: auto;
+  text-align: left;
+  img {
+    height: 50px;
+    width: 50px;
+  }
+`;
+
+const StyledButton = styled(Button)`
+  background: #ffde59;
 `;
 
 const Slider = () => {
   const localData = {
     first: [
-      { title: "Derece Öğrencisiyle Birebir Görüşme" },
-      { title: "Hedef Belirleme" },
-      { title: "Tecrübe Aktarımı" },
-      { title: "1 Saat Görüşme Süresi" },
+      {
+        title: "Derece öğrencisinden sınırsız saat özel ders",
+        icon: profile,
+      },
+      {
+        title: "Kişiye özel program hazırlama",
+        icon: calender,
+      },
+      {
+        title: "Telefon & Whatsapp üzerinden sınırsız erişim",
+        icon: tel,
+      },
+      {
+        title: "Sosyal gelişim etkinlikleri",
+        icon: community,
+      },
     ],
     second: [
-      { title: "Ayda 2 Kez Görüşme" },
-      { title: "7/24 İletişim" },
-      { title: "7/24 Takip" },
-      { title: "Haftalık Değil Günlük Program" },
-      { title: "Konu Tabloları" },
-      { title: "Deneme Analizi" },
-      { title: "Alışkanlık Geliştirme" },
+      {
+        title: "Kişiye özel program hazırlama",
+        icon: calender,
+      },
+      {
+        title: "Telefon & Whatsapp üzerinden sınırsız erişim",
+        icon: tel,
+      },
+      {
+        title: "İki haftada bir görüntülü konuşma",
+        icon: video,
+      },
     ],
     third: [
-      { title: "Derece Öğrencilerinden Özel Ders" },
-      { title: "Üst Kalite Soru Çözüm" },
-      { title: "Verimli Konu Anlatımı" },
-      { title: "Kaynak + Not Desteği" },
-      { title: "Yüz yüze veya Online" },
+      {
+        title: "Mustafa Ocak ile birebir görüşme",
+        icon: king,
+      },
+      {
+        title: "Kişiye özel program hazırlama",
+        icon: calender,
+      },
     ],
   };
   return (
     <Wrap id="slider">
-      <SmallCard>
-        <SmallTitle>Tek Görüşme | 600 TL</SmallTitle>
+      <MainCard>
+        <Title>Özel Ders Destekli Mentörlük </Title>
         <UlItem>
-          {localData.first.map(({ title }, index) => {
-            return <LiItem key={index}>{title}</LiItem>;
+          {localData.first.map(({ title, icon }, index) => {
+            return (
+              <LiItem key={index}>
+                <img src={icon} alt={icon} />
+                {title}
+              </LiItem>
+            );
           })}
         </UlItem>
-        <Button>
+        <StyledButton>
+          <Link
+            to={"http://wa.me/905380351129?text=Merhaba ben Mustafa Ocak"}
+            style={{ color: "#000", textDecoration: "none" }}
+          >
+            Hemen Başvur!
+          </Link>
+        </StyledButton>
+      </MainCard>
+      <SmallCard>
+        <Title>Sadece Mentörlük / 1800TL</Title>
+        <UlItem>
+          {localData.second.map(({ title, icon }, index) => {
+            return (
+              <LiItem key={index}>
+                <img src={icon} alt={icon} />
+                {title}
+              </LiItem>
+            );
+          })}
+        </UlItem>
+        <StyledButton>
           <Link
             to={"/FormApply"}
-            style={{ color: "#fff", textDecoration: "none" }}
+            style={{ color: "#000", textDecoration: "none" }}
           >
             Başvur
           </Link>
-        </Button>
+        </StyledButton>
       </SmallCard>
-      <MainCard>
-        <MassiveTitle>Koçluk | 2000 TL / ay</MassiveTitle>
+      <SmallCard2>
+        <Title>Tek Seferlik Görüşme / 500TL</Title>
         <UlItem>
-          {localData.second.map(({ title }, index) => {
-            return <LiItem key={index}>{title}</LiItem>;
+          {localData.third.map(({ title, icon }, index) => {
+            return (
+              <LiItem key={index}>
+                <img src={icon} alt={icon} />
+                {title}
+              </LiItem>
+            );
           })}
         </UlItem>
-        <Button>
+        <StyledButton>
           <Link
             to={"/FormApply"}
-            style={{ color: "#fff", textDecoration: "none" }}
+            style={{ color: "#000", textDecoration: "none" }}
           >
-            Koçluk Al
+            Başvur
           </Link>
-        </Button>
-      </MainCard>
-      <SmallCard2>
-        <SmallTitle>Özel Ders</SmallTitle>
-        <UlItem>
-          {localData.third.map(({ title }, index) => {
-            return <LiItem key={index}>{title}</LiItem>;
-          })}
-        </UlItem>
-        <Button>
-          <Link
-            to={"https://www.instagram.com/xakademixyz/"}
-            style={{ color: "#fff", textDecoration: "none" }}
-          >
-            DM gönder
-          </Link>
-        </Button>
+        </StyledButton>
       </SmallCard2>
     </Wrap>
   );
