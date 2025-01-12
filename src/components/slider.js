@@ -176,7 +176,7 @@ const Slider = () => {
         </UlItem>
         <StyledButton>
           <Link
-            to={"http://wa.me/905380351129?text=Merhaba ben Mustafa Ocak"}
+            to={"http://wa.me/905511349656?text=Merhaba ben Mustafa Ocak"}
             style={{ color: "#000", textDecoration: "none" }}
           >
             Hemen Başvur!
@@ -205,7 +205,7 @@ const Slider = () => {
         </StyledButton>
       </SmallCard>
       <SmallCard2>
-        <Title>Tek Seferlik Görüşme / 500TL</Title>
+        <Title>Tek Seferlik Görüşme / 600TL</Title>
         <UlItem>
           {localData.third.map(({ title, icon }, index) => {
             return (
