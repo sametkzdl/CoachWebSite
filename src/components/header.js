@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
 const LogoTitle = styled.h1`
   display: inline-block;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 46px;
 `;
 
 const StyledANav = styled.nav`

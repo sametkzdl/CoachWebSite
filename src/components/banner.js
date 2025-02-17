@@ -8,9 +8,11 @@ import downArrow from "../public/icons/down-arrow.svg";
 const textAnimation = keyframes`
   0% {
     width: 0;
+    height: 0;
   }
   100% {
     width: 100%;
+    height: 100%;
   }
 `;
 
@@ -66,25 +68,33 @@ const WrapBanner = styled.div`
 `;
 
 const WrapTitles = styled.div`
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  width: 60%;
+  @media ${device.laptopL} {
+    width: 80%;
+  }
+  @media ${device.tablet} {
+    width: 100%;
+  }
 `;
 
 const TitleA = styled.h2`
+  overflow: hidden;
   border-right: 4px solid orange;
   font-size: 6.25rem;
   font-weight: 700;
-  letter-spacing: 3px;
-  overflow: hidden;
-  width: 0;
-  animation: ${textAnimation} 2s forwards,
-    ${blinkCursor} 1.25s step-end forwards;
+  height: 0;
+  line-height: 6.25rem;
+  margin-bottom: 30px;
+  animation: ${textAnimation} 1.5s forwards, ${blinkCursor} 2s step-end forwards;
 `;
 
 const TitleB = styled.span`
   font-size: 6.25rem;
   font-weight: 700;
-  letter-spacing: 3px;
+  line-height: 6.25rem;
   background: linear-gradient(
     to bottom,
     ${theme.lightBlue},
@@ -131,13 +141,16 @@ const Banner = () => {
     <Wrap>
       <WrapBanner>
         <WrapTitles>
-          <TitleA>YKS'ye</TitleA>
-          <TitleB>{leftDays()} gün </TitleB>
-          <TitleA> kala derece ol!</TitleA>
+          <TitleA>
+            YKS'ye <TitleB>{leftDays()} </TitleB>gün kala derece ol!
+          </TitleA>
           <Button big="true">
             <Link
               to={"/FormApply"}
-              style={{ color: "#fff", textDecoration: "none" }}
+              style={{
+                color: "#fff",
+                textDecoration: "none",
+              }}
             >
               Koçluk Al
             </Link>
