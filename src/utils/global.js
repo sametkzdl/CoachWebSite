@@ -27,3 +27,22 @@ export const theme = {
   dark: "rgb(0, 0, 0)",
   lightBlue: "rgb(1, 194, 204)",
 };
+
+export const leftDays = () => {
+  const dateFormat = new Intl.DateTimeFormat("tr-TR", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+  let formattedDay = dateFormat
+    .format(new Date())
+    .replaceAll(".", "/")
+    .toString();
+  let [day, month, year] = formattedDay.split("/");
+  let currentDay = new Date(`${year}-${month}-${day}`);
+  let expireDate = new Date("2025-06-21");
+  const leftDays = Math.round(
+    (expireDate.getTime() - currentDay.getTime()) / (1000 * 3600 * 24)
+  );
+  return leftDays;
+};
