@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import Button from "./button";
 import { Link } from "react-router-dom";
-import { device, theme } from "../utils/global";
+import { device, leftDays, theme } from "../utils/global";
 import grafik from "../public/images/grafik.png";
 import downArrow from "../public/icons/down-arrow.svg";
 
@@ -72,7 +72,6 @@ const WrapTitles = styled.div`
 
 const TitleA = styled.h2`
   border-right: 4px solid orange;
-  white-space: nowrap;
   font-size: 6.25rem;
   font-weight: 700;
   letter-spacing: 3px;
@@ -82,12 +81,10 @@ const TitleA = styled.h2`
     ${blinkCursor} 1.25s step-end forwards;
 `;
 
-const TitleB = styled.h2`
+const TitleB = styled.span`
   font-size: 6.25rem;
   font-weight: 700;
   letter-spacing: 3px;
-  margin-top: -3rem;
-  margin-bottom: 20px;
   background: linear-gradient(
     to bottom,
     ${theme.lightBlue},
@@ -134,8 +131,9 @@ const Banner = () => {
     <Wrap>
       <WrapBanner>
         <WrapTitles>
-          <TitleA>YKS2025'te </TitleA>
-          <TitleB>efsane ol</TitleB>
+          <TitleA>YKS'ye</TitleA>
+          <TitleB>{leftDays()} gün </TitleB>
+          <TitleA> kala derece ol!</TitleA>
           <Button big="true">
             <Link
               to={"/FormApply"}

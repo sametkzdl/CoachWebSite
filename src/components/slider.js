@@ -1,35 +1,37 @@
 import styled, { css } from "styled-components";
-import { device, theme } from "../utils/global";
+import { device, leftDays, theme } from "../utils/global";
 import Button from "./button";
 import { Link } from "react-router-dom";
 import calender from "../public/icons/calender.png";
-import profile from "../public/icons/profile.png";
+import onay from "../public/icons/onay.png";
 import tel from "../public/icons/tel.png";
-import community from "../public/icons/community.png";
+import hedef from "../public/icons/hedef.png";
 import video from "../public/icons/video.png";
 import king from "../public/icons/king.png";
+import money from "../public/icons/para.png";
+import kupa from "../public/icons/kupa.png";
 
 const cardCss = css`
   text-align: center;
   padding: 2rem 1rem;
-  border-radius: 50px;
+  border-radius: 10px;
   border: none;
   transition: all 0.3s;
   cursor: pointer;
-  max-width: 600px;
+  max-width: 300px;
   &:hover {
     scale: 1.05;
-    box-shadow: 5px 5px 20px ${theme.primary}, -5px -5px 20px ${theme.secondary};
   }
 `;
 
 const Wrap = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: min-content min-content;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+  row-gap: 100px;
+  column-gap: 100px;
   padding: 6rem 2rem;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
   background: linear-gradient(
     to bottom,
     ${theme.darkBlue},
@@ -37,52 +39,39 @@ const Wrap = styled.div`
     ${theme.dark},
     ${theme.darkBlue}
   );
-  @media ${device.tabletL} {
-    grid-template-columns: 1fr;
+  > :nth-child(2) {
+    scale: 1.2;
+    &:hover {
+      scale: 1.25;
+    }
+    @media ${device.mobileL} {
+      scale: 1.05;
+    }
   }
 `;
 
-const MainCard = styled.div`
+const ValidCard = styled.div`
   ${cardCss}
-  background-color: #002b5b;
-  grid-column: 1;
-  grid-row: 1/-1;
-  justify-self: center;
-  align-self: center;
-  @media ${device.tabletL} {
-    grid-row: 1;
-  }
-`;
-
-const SmallCard = styled.div`
-  ${cardCss}
-  background-color: #00669c;
-  justify-self: center;
-  width: 100%;
-  @media ${device.tabletL} {
-    grid-row: 2;
-    width: auto;
-  }
-`;
-
-const SmallCard2 = styled.div`
-  ${cardCss}
-  background-color: #21486f;
-  justify-self: center;
-  width: 100%;
-  @media ${device.tabletL} {
-    grid-row: 3;
-    width: auto;
-  }
+  ${({ $gradient, $leftTop, $bottomRight }) =>
+    $gradient &&
+    css`
+      background: linear-gradient(
+        to right bottom,
+        ${$leftTop},
+        ${$bottomRight}
+      );
+      &:hover {
+        box-shadow: 5px 5px 20px ${$leftTop}, -5px -5px 20px ${$leftTop};
+      }
+    `};
 `;
 
 const Title = styled.h3`
-  white-space: nowrap;
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 500;
   margin-top: 0;
   padding-bottom: 10px;
-  color: #ffde59;
+  color: #fff;
   @media ${device.tablet} {
     font-size: 24px;
     white-space: pre-wrap;
@@ -100,53 +89,60 @@ const LiItem = styled.li`
   display: flex;
   margin-block: 16px;
   font-weight: 400;
-  font-size: 20px;
-  width: 75%;
-  gap: 30px;
+  font-size: 16px;
+  width: 95%;
+  gap: 15px;
   margin-inline: auto;
   text-align: left;
   img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
   }
 `;
 
 const StyledButton = styled(Button)`
-  background: #ffde59;
+  background: #fff;
+  padding: 10px 20px;
+  font-weight: 400;
+  text-decoration: underline;
 `;
 
 const Slider = () => {
   const localData = {
     first: [
       {
-        title: "Derece öğrencisinden sınırsız saat özel ders",
-        icon: profile,
+        title: `${leftDays()} günlük programın ilk günden hazır`,
+        icon: calender,
       },
       {
-        title: "Kişiye özel program hazırlama",
-        icon: calender,
+        title: "Hedef sıralamana ve bölümüne uygun koçla çalış",
+        icon: hedef,
       },
       {
         title: "Telefon & Whatsapp üzerinden sınırsız erişim",
         icon: tel,
       },
       {
-        title: "Sosyal gelişim etkinlikleri",
-        icon: community,
+        title: "İki haftada bir görüntülü görüşme",
+        icon: video,
       },
     ],
     second: [
       {
-        title: "Kişiye özel program hazırlama",
+        title: "Aylık koçlukla aynı, yalnızca haftalık olarak ödeyin”",
+        icon: onay,
+      },
+      {
+        title: `${leftDays()} günlük programın ilk günden hazır`,
         icon: calender,
       },
       {
-        title: "Telefon & Whatsapp üzerinden sınırsız erişim",
-        icon: tel,
+        title: "Hedef sıralamana ve bölümüne uygun koçla çalış",
+        icon: hedef,
       },
       {
-        title: "İki haftada bir görüntülü konuşma",
-        icon: video,
+        title: "Daha ucuz & İstediğiniz zaman cayabilirsiniz",
+        icon: money,
       },
     ],
     third: [
@@ -155,15 +151,19 @@ const Slider = () => {
         icon: king,
       },
       {
-        title: "Kişiye özel program hazırlama",
+        title: "Programını Mustafa Ocak hazırlıyor",
+        icon: kupa,
+      },
+      {
+        title: `${leftDays()} günlük programın bir saatte hazır`,
         icon: calender,
       },
     ],
   };
   return (
     <Wrap id="slider">
-      <MainCard>
-        <Title>Özel Ders Destekli Mentörlük </Title>
+      <ValidCard $gradient={true} $leftTop={"#69AFF5"} $bottomRight={"#F105D1"}>
+        <Title>Aylık Koçluk / 1800₺ </Title>
         <UlItem>
           {localData.first.map(({ title, icon }, index) => {
             return (
@@ -177,14 +177,19 @@ const Slider = () => {
         <StyledButton>
           <Link
             to={"http://wa.me/905511349656?text=Merhaba ben Mustafa Ocak"}
-            style={{ color: "#000", textDecoration: "none" }}
+            style={{ color: "#000" }}
           >
-            Hemen Başvur!
+            Ücretsiz Katıl
           </Link>
         </StyledButton>
-      </MainCard>
-      <SmallCard>
-        <Title>Sadece Mentörlük / 1800TL</Title>
+      </ValidCard>
+      <ValidCard
+        // style={{ scale: "1.2" }}
+        $gradient={true}
+        $leftTop={"#F326D5"}
+        $bottomRight={"#FFE862"}
+      >
+        <Title>Haftalık Koçluk / 500₺</Title>
         <UlItem>
           {localData.second.map(({ title, icon }, index) => {
             return (
@@ -196,16 +201,13 @@ const Slider = () => {
           })}
         </UlItem>
         <StyledButton>
-          <Link
-            to={"/FormApply"}
-            style={{ color: "#000", textDecoration: "none" }}
-          >
-            Başvur
+          <Link to={"/FormApply"} style={{ color: "#000" }}>
+            Hemen Başvur
           </Link>
         </StyledButton>
-      </SmallCard>
-      <SmallCard2>
-        <Title>Tek Seferlik Görüşme / 600TL</Title>
+      </ValidCard>
+      <ValidCard $gradient={true} $leftTop={"#9753FC"} $bottomRight={"#28FB75"}>
+        <Title>Tek Seferlik Görüşme / 750₺</Title>
         <UlItem>
           {localData.third.map(({ title, icon }, index) => {
             return (
@@ -217,14 +219,11 @@ const Slider = () => {
           })}
         </UlItem>
         <StyledButton>
-          <Link
-            to={"/FormApply"}
-            style={{ color: "#000", textDecoration: "none" }}
-          >
+          <Link to={"/FormApply"} style={{ color: "#000" }}>
             Başvur
           </Link>
         </StyledButton>
-      </SmallCard2>
+      </ValidCard>
     </Wrap>
   );
 };

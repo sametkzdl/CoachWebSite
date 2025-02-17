@@ -17,7 +17,7 @@ const Wrap = styled.div`
     css`
       background-color: rgb(0, 0, 0, 0.8);
       width: 100%;
-      height: calc(100% + 30px) ;
+      height: calc(100% + 30px);
       z-index: 2;
     `};
 `;
