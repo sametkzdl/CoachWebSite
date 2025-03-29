@@ -129,6 +129,20 @@ const Slider = () => {
     ],
     second: [
       {
+        title: "Mustafa Ocak ile birebir görüşme",
+        icon: king,
+      },
+      {
+        title: "Programını Mustafa Ocak hazırlıyor",
+        icon: kupa,
+      },
+      {
+        title: `${leftDays()} günlük programın bir saatte hazır`,
+        icon: calender,
+      },
+    ],
+    third: [
+      {
         title: "Aylık koçlukla aynı, yalnızca haftalık olarak ödeyin”",
         icon: onay,
       },
@@ -143,20 +157,6 @@ const Slider = () => {
       {
         title: "Daha ucuz & İstediğiniz zaman cayabilirsiniz",
         icon: money,
-      },
-    ],
-    third: [
-      {
-        title: "Mustafa Ocak ile birebir görüşme",
-        icon: king,
-      },
-      {
-        title: "Programını Mustafa Ocak hazırlıyor",
-        icon: kupa,
-      },
-      {
-        title: `${leftDays()} günlük programın bir saatte hazır`,
-        icon: calender,
       },
     ],
   };
@@ -179,7 +179,7 @@ const Slider = () => {
             to={"http://wa.me/905511349656?text=Merhaba ben Mustafa Ocak"}
             style={{ color: "#000" }}
           >
-            Ücretsiz Katıl
+            Hemen Başvur
           </Link>
         </StyledButton>
       </ValidCard>
@@ -189,7 +189,7 @@ const Slider = () => {
         $leftTop={"#F326D5"}
         $bottomRight={"#FFE862"}
       >
-        <Title>Haftalık Koçluk / 500₺</Title>
+        <Title>Tek Seferlik Görüşme / 850₺ </Title>
         <UlItem>
           {localData.second.map(({ title, icon }, index) => {
             return (
@@ -207,7 +207,7 @@ const Slider = () => {
         </StyledButton>
       </ValidCard>
       <ValidCard $gradient={true} $leftTop={"#9753FC"} $bottomRight={"#28FB75"}>
-        <Title>Tek Seferlik Görüşme / 750₺</Title>
+        <Title>Haftalık Koçluk / 500₺</Title>
         <UlItem>
           {localData.third.map(({ title, icon }, index) => {
             return (
