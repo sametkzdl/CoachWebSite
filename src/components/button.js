@@ -10,7 +10,6 @@ const StyledButton = styled.button`
   background: linear-gradient(to right, ${theme.primary}, ${theme.secondary});
   color: #fff;
   padding: 1rem;
-  text-shadow: rgb(43, 43, 40) 1px 0 10px;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.3s;

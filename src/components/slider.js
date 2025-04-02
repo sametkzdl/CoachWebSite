@@ -189,7 +189,7 @@ const Slider = () => {
         $leftTop={"#F326D5"}
         $bottomRight={"#FFE862"}
       >
-        <Title>Tek Seferlik Görüşme / 850₺ </Title>
+        <Title>Tek Seferlik Görüşme / 1000₺ </Title>
         <UlItem>
           {localData.second.map(({ title, icon }, index) => {
             return (
