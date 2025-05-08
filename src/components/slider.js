@@ -12,6 +12,10 @@ import money from "../public/icons/para.png";
 import kupa from "../public/icons/kupa.png";
 
 const cardCss = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 2rem 1rem;
   border-radius: 10px;
@@ -19,6 +23,7 @@ const cardCss = css`
   transition: all 0.3s;
   cursor: pointer;
   max-width: 300px;
+  min-height: 480px;
   &:hover {
     scale: 1.05;
   }
@@ -39,15 +44,6 @@ const Wrap = styled.div`
     ${theme.dark},
     ${theme.darkBlue}
   );
-  > :nth-child(2) {
-    scale: 1.2;
-    &:hover {
-      scale: 1.25;
-    }
-    @media ${device.mobileL} {
-      scale: 1.05;
-    }
-  }
 `;
 
 const ValidCard = styled.div`
@@ -189,7 +185,7 @@ const Slider = () => {
         $leftTop={"#F326D5"}
         $bottomRight={"#FFE862"}
       >
-        <Title>Tek Seferlik Görüşme / 1200₺ </Title>
+        <Title>Tek Seferlik Görüşme / 1000₺ </Title>
         <UlItem>
           {localData.second.map(({ title, icon }, index) => {
             return (
@@ -206,7 +202,7 @@ const Slider = () => {
           </Link>
         </StyledButton>
       </ValidCard>
-      <ValidCard $gradient={true} $leftTop={"#9753FC"} $bottomRight={"#28FB75"}>
+      {/* <ValidCard $gradient={true} $leftTop={"#9753FC"} $bottomRight={"#28FB75"}>
         <Title>Haftalık Koçluk / 500₺</Title>
         <UlItem>
           {localData.third.map(({ title, icon }, index) => {
@@ -223,7 +219,7 @@ const Slider = () => {
             Başvur
           </Link>
         </StyledButton>
-      </ValidCard>
+      </ValidCard> */}
     </Wrap>
   );
 };
