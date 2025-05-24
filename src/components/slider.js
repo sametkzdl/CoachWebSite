@@ -172,10 +172,10 @@ const Slider = () => {
         </UlItem>
         <StyledButton>
           <Link
+            style={{ pointerEvents: "none", color: "#000" }}
             to={"http://wa.me/905511349656?text=Merhaba ben Mustafa Ocak"}
-            style={{ color: "#000" }}
           >
-            Hemen Başvur
+            AKTİF DEĞİL
           </Link>
         </StyledButton>
       </ValidCard>
@@ -185,7 +185,7 @@ const Slider = () => {
         $leftTop={"#F326D5"}
         $bottomRight={"#FFE862"}
       >
-        <Title>Tek Seferlik Görüşme / 1000₺ </Title>
+        <Title>Tek Seferlik Görüşme / 1500₺ </Title>
         <UlItem>
           {localData.second.map(({ title, icon }, index) => {
             return (
